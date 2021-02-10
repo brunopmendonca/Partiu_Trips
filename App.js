@@ -13,7 +13,7 @@ export default function App() {
             
  <NavigationContainer>
    <Stack.Navigator>
-     <Stack.Screen name= 'Inicial' component = {Inicial}  />
+     <Stack.Screen name= 'Inicial' component = {Inicial} options={ {title:"", headerStyle:{height:0}}} />
      <Stack.Screen name= 'Login' component = {Login}  />
      <Stack.Screen name= 'Cadastro' component = {Cadastro}  />
    </Stack.Navigator>
