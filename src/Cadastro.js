@@ -6,7 +6,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 const Cadastro = ({navigation}) => ( 
   
 
-<View style= {style.container}>
+<ScrollView style= {style.container}>
 
       <View style= {style.header} >
 
@@ -71,7 +71,7 @@ const Cadastro = ({navigation}) => (
   
 
 
-</View>
+</ScrollView>
   
 
   );
@@ -79,15 +79,14 @@ const Cadastro = ({navigation}) => (
   const style = StyleSheet.create({
 
     container1:{
-      flex:1,
       flexDirection:"column", 
     },
 
     header:{
       backgroundColor:"#FBF8F8",
-      height:"33%",
       alignItems:"center",
-      justifyContent:"center"
+      justifyContent:"center",
+      height:300
 
      },
 
@@ -133,7 +132,6 @@ const Cadastro = ({navigation}) => (
 
     login: {
       backgroundColor: "#1E7987",
-      height: "67%",
       borderTopLeftRadius: 45,
       borderTopRightRadius: 45
 
