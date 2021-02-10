@@ -15,7 +15,6 @@ const Inicial = ({navigation}) => (
           </View>
 
 
-
       <View style= {style.login}>
 
         <View style= {{flex:1}}>
@@ -23,7 +22,7 @@ const Inicial = ({navigation}) => (
               <TextInput style={style.input} placeholder= "Email"/>
               <TextInput style={style.input} placeholder= "Senha"/>
               <TouchableHighlight style={{backgroundColor:"black"}} onPress= {()=>{alert("nada")}} underlayColor="#1E7987">
-                  <Text style={{paddingTop:10, marginRight:25, alignSelf:"flex-end",color:"#fff", fontSize:15}}>Esqueceu sua senha?</Text>
+                  <Text style={{paddingTop:10, marginRight:25, alignSelf:"flex-end",color:"#fff", fontSize:15}}>Esqueci minha senha</Text>
               </TouchableHighlight>
 
 
