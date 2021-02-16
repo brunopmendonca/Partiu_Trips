@@ -2,7 +2,6 @@ import {NavigationContainer, StackActions} from '@react-navigation/native'
 import {createStackNavigator } from '@react-navigation/stack'
 import React from 'react';
 
-import Inicial from './src/Inicial';
 import Login from './src/Login';
 import Cadastro from './src/Cadastro';
 
@@ -13,8 +12,7 @@ export default function App() {
             
  <NavigationContainer>
    <Stack.Navigator>
-     <Stack.Screen name= 'Inicial' component = {Inicial} options={ {title:"", headerStyle:{height:0}}} />
-     <Stack.Screen name= 'Login' component = {Login}  />
+     <Stack.Screen name= 'Login' component = {Login} options={ {title:"", headerStyle:{height:0}}} />
      <Stack.Screen name= 'Cadastro' component = {Cadastro}  />
    </Stack.Navigator>
  </NavigationContainer>
