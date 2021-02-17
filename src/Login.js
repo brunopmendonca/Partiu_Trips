@@ -19,12 +19,17 @@ const Login = ({navigation}) =>{
     }
     const login = () =>{
       firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
-            window.alert("login com sucesso")
+            navegacao()
         }).catch(()=>{
             window.alert("login nao funcionou")
         })
       }
 
+    const navegacao = () =>{
+
+      navigation.navigate("Bemvindo")
+
+    }
 
 
 
@@ -33,10 +38,18 @@ return (
 
 <View style= {style.container1}>
 
+   
+
 <View style= {style.header} >
 
-    <Text style={style.titulo1}>Partiu</Text>
-    <Text style= {style.titulo2}>Trips</Text>
+    <View style={style.simbolo}>
+            <Image source={require("../icons/simbolo.png")}/>
+    </View> 
+
+    <View style={{alignItems:"center"}}>
+        <Text style={style.titulo1}>Partiu</Text>
+        <Text style= {style.titulo2}>Trips</Text>
+    </View>
 
 </View>
 
@@ -53,7 +66,7 @@ return (
                   <View style={{ marginTop:7}}>
                       <TextInput onChangeText={txtEmail => onChangeEmail(txtEmail)} style={style.input} placeholder= "Email"  placeholderTextColor="#fff"/>
                       <TextInput onChangeText={txtPassword => onChangePassword(txtPassword)} style={style.input} placeholder= "Senha"  placeholderTextColor="#fff"/>
-                      <TouchableHighlight onPress= {()=>{alert("nada")}} underlayColor="#1E7987">
+                      <TouchableHighlight onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
                           <Text style={{ alignSelf:"flex-end",color:"#fff", fontSize:15, marginRight:"10%", marginTop:10}}>Esqueci minha senha</Text>
                     </TouchableHighlight>
                   </View>
@@ -106,12 +119,23 @@ const style = StyleSheet.create({
   container1:{
      flex:1
   },
+
+
+  simbolo:{
+      
+    height:"20%",
+    alignItems:"baseline",
+    justifyContent:"center",
+    alignItems:"baseline",
+    paddingLeft:25,
+   
+
+  },
   
   header:{
-  backgroundColor:"#FBF8F8",
-  alignItems:"center",
-  justifyContent:"center",
-  height:300
+    backgroundColor:"#FBF8F8",
+    marginTop:30,
+    height:"30%"
   
   },
   
