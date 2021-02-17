@@ -5,7 +5,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 
 
-const Cadastro = ({navigation}) =>{
+const Dados = ({navigation}) =>{
   
  
   const [email, setEmail] = useState('')
@@ -51,13 +51,15 @@ const Cadastro = ({navigation}) =>{
 
 <ScrollView style= {style.container}>
 
-      <View style= {style.header} >
+<View style= {style.header} >
 
-          <Text style={style.titulo1}>Partiu</Text>
-          <Text style= {style.titulo2}>Trips</Text>
+    
+    <Image source={require("../icons/simbolo.png")}/>
+    <Text style={{fontSize:28, color:"#1E7987", textAlign:"center"}}>Dados da Viagem</Text>
+    <Text style={{fontSize:28, color:"#1E7987", textAlign:"center"}}></Text>
+    
 
-      </View>
-
+</View>
 
 
       <View style= {style.login}>
@@ -127,12 +129,27 @@ const Cadastro = ({navigation}) =>{
     },
 
     header:{
+      flexDirection:"row",
       backgroundColor:"#FBF8F8",
-      alignItems:"center",
-      justifyContent:"center",
-      height:226
+      height:"15%",
+      alignItems:"baseline",
+      justifyContent:"space-around",
+      paddingTop:30
 
      },
+
+
+    simbolo:{
+        
+    
+        alignItems:"baseline",
+        justifyContent:"center",
+        alignItems:"baseline",
+        
+        
+    
+
+    },
 
      titulo1:{
       fontSize: 55,
@@ -187,4 +204,4 @@ const Cadastro = ({navigation}) =>{
   })
 
 
-  export default Cadastro
+  export default Dados

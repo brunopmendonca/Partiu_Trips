@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Organizador_de_viagens",
-    "slug": "Organizador_de_viagens",
+    "name": "PartiuTrip",
+    "slug": "PartiuTrip",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,6 +20,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.BrueGabi.PartiuTrip",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
