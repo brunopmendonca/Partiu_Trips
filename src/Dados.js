@@ -64,25 +64,50 @@ const Dados = ({navigation}) =>{
 
       <View style= {style.login}>
 
-              <View style= {{flex:1, marginBottom:20,marginTop:20}}>
+              <View style= {{flex:1, marginBottom:20,marginTop:20, }}>
           
-                      <View style={{height:"50%"}}>
+                      
                         
-                        <Text style={{color: "white", fontSize:28, marginLeft:24 }}>Cadastro</Text>
                        
-                        <View style={{flex:1, justifyContent:"space-around"}}>
-                            <TextInput style={style.input} placeholder= "Email"  placeholderTextColor="#fff" onChangeText={txtEmail => onChangeEmail(txtEmail)}/>
-                            <TextInput style={style.input} placeholder= "Senha"  placeholderTextColor="#fff" onChangeText={txtPassword => onChangePassword(txtPassword)}/>
-                            <TextInput style={style.input} placeholder= "Senha"  placeholderTextColor="#fff" onChangeText={txtConfPassword => onChangeConfPassword(txtConfPassword)}/>
-                            <TouchableHighlight onPress= {()=>{alert("nada")}} underlayColor="#1E7987">
-                                <Text style={{ alignSelf:"flex-end",color:"#fff", fontSize:15, marginRight:"10%", marginTop:10}}>Esqueci minha senha</Text>
-                            </TouchableHighlight>
+                        <View style={style.input}>
+                            <TextInput style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20,height:"30%", marginBottom:20}}  placeholder= "Email"  placeholderTextColor="#fff" onChangeText={txtEmail => onChangeEmail(txtEmail)}/>
+                            <TextInput style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20, height:"30%"}}  placeholder= "Senha"  placeholderTextColor="#fff" onChangeText={txtPassword => onChangePassword(txtPassword)}/>
                         </View>
                        
-                      </View>
+                        <View style={{height:"50%", flexDirection:"row",justifyContent:"center", alignItems:"center"}}>
+
+                            <View style={{flexDirection:"column"}}>
+
+                            
+                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                    <Image   source={require("../icons/praia.png")}/>
+                                 </TouchableHighlight>
+                            
+                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                    <Image   source={require("../icons/inverno.png")}/>
+                                 </TouchableHighlight>
+                            
+                            
+
+                            </View>
+
+                           
+                            <View style={{flexDirection:"column"}}>
+
+                            <TouchableHighlight style={{  margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                    <Image   source={require("../icons/montanha.png")}/>
+                            </TouchableHighlight>
+                                
+                            <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                    <Image   source={require("../icons/cidade.png")}/>
+                            </TouchableHighlight>  
+
+                            </View>
+
+                        </View>
 
 
-                      <View style={{height:"13%", justifyContent:"flex-end", marginTop:10}} >
+                      <View style={{ flex:1,justifyContent:"center"}} >
                       <Button 
                             buttonStyle = {style.botao}
                             title="Cadastrar"
@@ -92,22 +117,6 @@ const Dados = ({navigation}) =>{
                       </View>
           
 
-                      <View style={{flexDirection:"row", justifyContent:"space-around", alignItems:"center"}}>
-                        <View style={{backgroundColor: "#fff", height:1, marginTop:27, width:"15%"}}></View>
-                        <Text style={{marginTop:22, color:"#fff", fontSize:15}}>Entrar com</Text>
-                        <View style={{backgroundColor: "#fff", height:1, marginTop:27, width:"15%"}}></View>
-                      </View>
-
-                      <View style={{height:"20%",alignItems:"center", justifyContent:"center" }}>
-                        <Image style={{backgroundColor:"#fff", height:60, width:60, borderRadius:50}}  source={require("../icons/image_5.png")}/>
-                      </View>
-
-                      <View style={{flexDirection:"row", alignSelf:"center", height:30, justifyContent:"flex-end"}}>
-                        <Text >Nao possui conta?</Text>
-                        <TouchableHighlight >
-                          <Text style={{color:"#EB6458", marginLeft:5}}>Cadastre-se</Text>
-                        </TouchableHighlight>
-                      </View>
 
                       
 
@@ -126,6 +135,7 @@ const Dados = ({navigation}) =>{
 
     container1:{
       flexDirection:"column", 
+      height:"100%"
     },
 
     header:{
@@ -146,37 +156,17 @@ const Dados = ({navigation}) =>{
         justifyContent:"center",
         alignItems:"baseline",
         
-        
-    
 
     },
 
-     titulo1:{
-      fontSize: 55,
-      color: "#EB6458"
-     },
-
-     titulo2:{
-
-      fontSize:50,
-      color: "#1E7987"
-
-     },
-
-     loginIn:{
-
-      marginLeft:24
-
-     },
 
      input:{
       //  backgroundColor:"#fff", 
        width:"80%",
-       height:"20%", 
+       height:"20%",
        alignSelf:"center",
-       borderBottomWidth: 1,
-       borderColor: "#fff",
-       fontSize:20,
+       justifyContent:"center" ,
+       marginBottom:30
 
       },
 
@@ -186,7 +176,7 @@ const Dados = ({navigation}) =>{
       justifyContent:"center",
       backgroundColor: "#EB6458",
       width:"80%",
-      height:"80%",
+      height:"55%",
       borderRadius: 40,
       
 

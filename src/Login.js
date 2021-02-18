@@ -36,7 +36,7 @@ const Login = ({navigation}) =>{
 return ( 
   
 
-<View style= {style.container1}>
+<ScrollView>
 
    
 
@@ -92,7 +92,7 @@ return (
                   <Image style={{backgroundColor:"#fff", height:60, width:60, borderRadius:50, marginBottom:20, marginTop:20}}  source={require("../icons/image_5.png")}/>
                 </View>
 
-                  <View style={{flexDirection:"row", alignSelf:"center", flex:1, justifyContent:"flex-end"}}> 
+                  <View style={{flexDirection:"row", alignSelf:"center", flex:1, justifyContent:"flex-end", marginBottom:100}}> 
                   <Text >Nao possui conta?</Text>
                   <TouchableHighlight onPress = {()=> navigation.navigate('Cadastro')}>
                     <Text style={{color:"#EB6458", marginLeft:5}}>Cadastre-se</Text>
@@ -107,7 +107,7 @@ return (
 
 
 
-</View>
+</ScrollView>
 
 
 
@@ -116,9 +116,7 @@ return (
 
 const style = StyleSheet.create({
 
-  container1:{
-     flex:1
-  },
+
 
 
   simbolo:{
@@ -134,7 +132,7 @@ const style = StyleSheet.create({
   
   header:{
     backgroundColor:"#FBF8F8",
-    marginTop:30,
+    
     height:"30%"
   
   },
@@ -185,9 +183,9 @@ const style = StyleSheet.create({
   backgroundColor: "#1E7987",
   borderTopLeftRadius: 45,
   borderTopRightRadius: 45,
-  flex:1,
   paddingTop:10,
-  paddingBottom:20
+  paddingBottom:50,
+  height:700
   
   
   

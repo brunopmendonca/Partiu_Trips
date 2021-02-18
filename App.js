@@ -14,7 +14,7 @@ export default function App() {
             
  <NavigationContainer>
    <Stack.Navigator>
-     <Stack.Screen name= 'Login' component = {Login} options={ {title:"", headerStyle:{height:0}}} />
+     <Stack.Screen name= 'Login' component = {Login} options={ {title:"Home"}} />
      <Stack.Screen name= 'Cadastro' component = {Cadastro}  />
      <Stack.Screen name= 'Bemvindo' component = {Bemvindo}  />
      <Stack.Screen name= 'Dados' component = {Dados}  />
