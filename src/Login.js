@@ -66,7 +66,7 @@ return (
                   <View style={{ marginTop:7}}>
                       <TextInput onChangeText={txtEmail => onChangeEmail(txtEmail)} style={style.input} placeholder= "Email"  placeholderTextColor="#fff"/>
                       <TextInput onChangeText={txtPassword => onChangePassword(txtPassword)} style={style.input} placeholder= "Senha"  placeholderTextColor="#fff"/>
-                      <TouchableHighlight onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                      <TouchableHighlight onPress = {()=> navigation.navigate("Dados")} underlayColor="#1E7987">
                           <Text style={{ alignSelf:"flex-end",color:"#fff", fontSize:15, marginRight:"10%", marginTop:10}}>Esqueci minha senha</Text>
                     </TouchableHighlight>
                   </View>

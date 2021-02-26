@@ -4,16 +4,23 @@ import {Button} from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 import DatePicker from "react-native-datepicker"
+import Bemvindo from "./Bemvindo"
+import {useNavigation} from "@react-navigation/native"
 
 
-const Dados = ({navigation}) =>{
+const Dados = () =>{
   
+  const navigation= useNavigation()
  
   const [ida, setIda] = useState('')
   const [volta, setVolta] = useState('')
+  const [imagem, setImagem]= useState('')
+  
 
 
-
+  const HandIf= ()=>{
+    navigation.navigate('Bemvindo', {ida:ida, volta:volta, foto: imagem})
+  }
  
  
   return ( 
@@ -50,11 +57,11 @@ const Dados = ({navigation}) =>{
                             <View style={{flexDirection:"column"}}>
 
                             
-                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                 <TouchableHighlight onPress={()=>{setImagem(<Image source={require('../icons/praia.png')}/> )}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/praia.png")}/>
                                  </TouchableHighlight>
                             
-                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                 <TouchableHighlight onPress={()=>{setImagem(require("../icons/inverno.png"))}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/inverno.png")}/>
                                  </TouchableHighlight>
                             
@@ -65,11 +72,11 @@ const Dados = ({navigation}) =>{
                            
                             <View style={{flexDirection:"column"}}>
 
-                            <TouchableHighlight style={{  margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                            <TouchableHighlight onPress={()=>{setImagem(require("../icons/montanha.png"))}} style={{  margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/montanha.png")}/>
                             </TouchableHighlight>
                                 
-                            <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                            <TouchableHighlight onPress={()=>{setImagem(require("../icons/cidade.png"))}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/cidade.png")}/>
                             </TouchableHighlight>  
 
@@ -82,6 +89,7 @@ const Dados = ({navigation}) =>{
                       <Button 
                             buttonStyle = {style.botao}
                             titleStyle={{fontSize:23}}
+                            onPress={HandIf}
                             />
                       </View>
           
