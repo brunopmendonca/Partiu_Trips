@@ -5,6 +5,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 
 
+
 const Cadastro = ({navigation}) =>{
   
  

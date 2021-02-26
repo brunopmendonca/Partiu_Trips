@@ -3,47 +3,24 @@ import {  Text, View, StyleSheet, Image, TextInput,ScrollView  } from 'react-nat
 import {Button} from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
+import DatePicker from "react-native-datepicker"
+import Bemvindo from "./Bemvindo"
+import {useNavigation} from "@react-navigation/native"
 
 
-const Dados = ({navigation}) =>{
+const Dados = () =>{
   
+  const navigation= useNavigation()
  
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confPassword, setConfPassword] = useState ('')
+  const [ida, setIda] = useState('')
+  const [volta, setVolta] = useState('')
+  const [imagem, setImagem]= useState('')
+  
 
 
-  const onChangeEmail = (txtEmail) => {
-      setEmail(txtEmail)
+  const HandIf= ()=>{
+    navigation.navigate('Bemvindo', {ida:ida, volta:volta, foto: imagem})
   }
-  const onChangePassword = (txtPassword) =>{
-      setPassword(txtPassword)
-  }
-
-  const onChangeConfPassword = (txtConfPassword) =>{
-    setConfPassword(txtConfPassword)
-}
-
-
-  const cadastration = () =>{
-    if(confPassword == password){
-      firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>{
-        
-    }).catch(()=>{
-        window.alert("login nao funcionou")
-    })
-    }else(
-      window.alert("senha nao bate")
-    )
-    }
-
- 
- 
- 
- 
- 
- 
- 
  
  
   return ( 
@@ -70,8 +47,9 @@ const Dados = ({navigation}) =>{
                         
                        
                         <View style={style.input}>
-                            <TextInput style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20,height:"30%", marginBottom:20}}  placeholder= "Email"  placeholderTextColor="#fff" onChangeText={txtEmail => onChangeEmail(txtEmail)}/>
-                            <TextInput style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20, height:"30%"}}  placeholder= "Senha"  placeholderTextColor="#fff" onChangeText={txtPassword => onChangePassword(txtPassword)}/>
+                            <TextInput style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20,height:"30%", marginBottom:20}}  placeholder= "Lugar"  placeholderTextColor="#fff" onChangeText={txtEmail => onChangeEmail(txtEmail)}/>
+                            <DatePicker onDateChange={(e)=>{setIda(e)}} style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20, height:"30%", width:"100%"}}  date={ida} format= "DD-MM-YYYY"/>
+                            <DatePicker onDateChange={(e)=>{setVolta(e)}} style={{borderBottomWidth: 1,borderColor: "#fff",fontSize:20, height:"30%", width:"100%"}}  date={volta} format= "DD-MM-YYYY"/>
                         </View>
                        
                         <View style={{height:"50%", flexDirection:"row",justifyContent:"center", alignItems:"center"}}>
@@ -79,11 +57,11 @@ const Dados = ({navigation}) =>{
                             <View style={{flexDirection:"column"}}>
 
                             
-                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                 <TouchableHighlight onPress={()=>{setImagem(<Image source={require('../icons/praia.png')}/> )}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/praia.png")}/>
                                  </TouchableHighlight>
                             
-                                 <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                                 <TouchableHighlight onPress={()=>{setImagem(require("../icons/inverno.png"))}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/inverno.png")}/>
                                  </TouchableHighlight>
                             
@@ -94,11 +72,11 @@ const Dados = ({navigation}) =>{
                            
                             <View style={{flexDirection:"column"}}>
 
-                            <TouchableHighlight style={{  margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                            <TouchableHighlight onPress={()=>{setImagem(require("../icons/montanha.png"))}} style={{  margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/montanha.png")}/>
                             </TouchableHighlight>
                                 
-                            <TouchableHighlight style={{ margin:10, borderRadius:20}} onPress = {()=> navigation.navigate('Bemvindo')} underlayColor="#1E7987">
+                            <TouchableHighlight onPress={()=>{setImagem(require("../icons/cidade.png"))}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/cidade.png")}/>
                             </TouchableHighlight>  
 
@@ -110,9 +88,8 @@ const Dados = ({navigation}) =>{
                       <View style={{ flex:1,justifyContent:"center"}} >
                       <Button 
                             buttonStyle = {style.botao}
-                            title="Cadastrar"
-                            onPress = {cadastration}
                             titleStyle={{fontSize:23}}
+                            onPress={HandIf}
                             />
                       </View>
           
