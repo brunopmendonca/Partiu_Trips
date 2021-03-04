@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import {  Text, View, StyleSheet, Image, TextInput,ScrollView  } from 'react-native';
+import {  Text, View, StyleSheet, Image, TextInput,ScrollView, TouchableOpacity  } from 'react-native';
 import {Button} from 'react-native-elements'
-import { TouchableHighlight } from 'react-native-gesture-handler';
+
 import Dados from "./Dados"
 import {useNavigation} from "@react-navigation/native"
 import Carousel from 'react-native-snap-carousel';
@@ -12,11 +12,9 @@ const dados = require('../icons/praia.png')
   
 
 
-const Bemvindo = ({route}) =>{
+const Bemvindo = ({route, navigation}) =>{
 
- 
-     
-  const navigation= useNavigation()
+
   const [pic,setImagem] = useState(route.params) 
   
   
@@ -26,12 +24,17 @@ const Bemvindo = ({route}) =>{
   console.log(dados)
 
   const renderItem = ({item, index}) => {
+
+
+
     return (
         <View style={{flex:1}}>
             <Text style={style.title}>Ida: { item.ida }</Text>
             <Text style={style.title}>Volta: { item.volta }</Text>
-    <Text style={style.title}>{ pic.length}</Text>
-            <Image source= {item.imagem} style={{overflow:"visible", flex:1,}} />
+            <Text style={style.title}>{ pic.length}</Text>
+             <TouchableOpacity onPress={()=> navigation.navigate("Func")}>
+                <Image source= {item.imagem} style={{overflow:"visible", width:200, height:200}} />
+            </TouchableOpacity> 
         </View>
     );
 }
