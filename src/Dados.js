@@ -16,10 +16,11 @@ const Dados = () =>{
   const [volta, setVolta] = useState('')
   const [imagem, setImagem]= useState('')
   
+  
 
 
   const HandIf= ()=>{
-    navigation.navigate('Bemvindo', {ida:ida, volta:volta, foto: imagem})
+    navigation.navigate('Bemvindo', {ida:ida, volta:volta, imagem:imagem})
   }
  
  
@@ -57,7 +58,7 @@ const Dados = () =>{
                             <View style={{flexDirection:"column"}}>
 
                             
-                                 <TouchableHighlight onPress={()=>{setImagem(<Image source={require('../icons/praia.png')}/> )}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
+                                 <TouchableHighlight onPress={()=>{setImagem(require('../icons/praia.png'))}} style={{ margin:10, borderRadius:20}}  underlayColor="#1E7987">
                                     <Image   source={require("../icons/praia.png")}/>
                                  </TouchableHighlight>
                             
