@@ -32,7 +32,7 @@ const Bemvindo = ({route, navigation}) =>{
             <Text style={style.title}>Ida: { item.ida }</Text>
             <Text style={style.title}>Volta: { item.volta }</Text>
             <Text style={style.title}>{ pic.length}</Text>
-             <TouchableOpacity onPress={()=> navigation.navigate("Func")}>
+             <TouchableOpacity onPress={()=> navigation.navigate("Func", {ida: item.ida, volta:item.volta, imagem:item.imagem })}>
                 <Image source= {item.imagem} style={{overflow:"visible", width:200, height:200}} />
             </TouchableOpacity> 
         </View>
