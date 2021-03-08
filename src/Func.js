@@ -1,10 +1,11 @@
 import React, { useState} from 'react';
-import {  Text, View, StyleSheet, Image, TextInput, ScrollView  } from 'react-native';
+import {  Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity  } from 'react-native';
 // import {Button} from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 import { Appbar, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Platform } from 'react-native';
+import MapView from 'react-native-maps';
 
 const Func = ({navigation, route}) =>{
   
@@ -28,21 +29,54 @@ return (
           <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
       </View>
 
-     
-         
-
-      <Card>
-          <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+      
+      <Card style={style.card}>
+          <Card.Cover style={style.imagem} source={imagem} />
           <Card.Content>
             <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
+            <View style={style.datas}>
+              <Paragraph>{ida}</Paragraph>
+              <Paragraph> até </Paragraph>
+              <Paragraph> {volta} </Paragraph>
+            </View>
           </Card.Content>
-          <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-          <Card.Actions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </Card.Actions>
       </Card>
+
+      <View style={style.grupo}>
+
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+          
+
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+  
+         
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+          
+      </View>
+
+      <View style={style.grupo}>
+
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+          
+
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+  
+         
+              <TouchableOpacity style={style.opcao} >
+                <Text style={style.textoOpcao}> Gastos </Text>
+              </TouchableOpacity>
+          
+      </View>
      
 
 </ScrollView>
@@ -60,6 +94,7 @@ const style = StyleSheet.create({
     flexDirection:"row",
     alignItems:"baseline",
     justifyContent:"space-around",
+    marginTop:20
 
    },
  
@@ -75,21 +110,49 @@ const style = StyleSheet.create({
     height:"15%",
     alignItems:"center",
     justifyContent:"center",
+    marginTop:20
     
   },
 
-  viagem:{
-    
+  
+
+  card:{
+    marginTop:20,
+    borderRadius:40,
+    width:"90%",
+    alignSelf:"center",
+    padding:20
     
   },
 
   imagem:{
-    overflow:"visible", 
-    width:"100%",
-    
-    
-  }
+    width:"90%",
+    alignSelf:"center"
+  },
 
+  datas:{
+    flexDirection:"row",
+    
+  },
+
+  grupo:{
+    flexDirection:"row",
+    justifyContent: 'space-around',
+    marginTop:20,
+    padding:5
+  },
+
+  opcao:{
+    backgroundColor: "#1E7987",
+    height: 100,
+    width:100,
+    borderRadius:10,
+    alignItems: "center",
+    justifyContent:"center"
+    
+  },
+
+  
 
   
   })
