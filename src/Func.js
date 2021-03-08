@@ -5,6 +5,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 import { Appbar, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Platform } from 'react-native';
+import MapView from 'react-native-maps';
 
 const Func = ({navigation, route}) =>{
   
@@ -120,7 +121,7 @@ const style = StyleSheet.create({
     borderRadius:40,
     width:"90%",
     alignSelf:"center",
-    paddingTop:20
+    padding:20
     
   },
 

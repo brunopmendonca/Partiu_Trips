@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import {  Text, View, StyleSheet, Image, TextInput,ScrollView, TouchableOpacity  } from 'react-native';
 import {Button} from 'react-native-elements'
-
+import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper'
 import Dados from "./Dados"
 import {useNavigation} from "@react-navigation/native"
 import Carousel from 'react-native-snap-carousel';
@@ -25,16 +25,21 @@ const Bemvindo = ({route, navigation}) =>{
 
   const renderItem = ({item, index}) => {
 
-
-
     return (
-        <View style={{flex:1}}>
-            <Text style={style.title}>Ida: { item.ida }</Text>
-            <Text style={style.title}>Volta: { item.volta }</Text>
-            <Text style={style.title}>{ pic.length}</Text>
-             <TouchableOpacity onPress={()=> navigation.navigate("Func", {ida: item.ida, volta:item.volta, imagem:item.imagem })}>
-                <Image source= {item.imagem} style={{overflow:"visible", width:200, height:200}} />
-            </TouchableOpacity> 
+        <View>
+          <Card style={style.card}>
+          <TouchableOpacity style={style.imagem} onPress={()=> navigation.navigate("Func", {ida: item.ida, volta:item.volta, imagem:item.imagem })}>
+              <Image style={{height:200, width:250}} source= {item.imagem} />
+          </TouchableOpacity> 
+          <Card.Content>
+            <Title>Card title</Title>
+            <View style={style.datas}>
+              <Paragraph>{item.ida}</Paragraph>
+              <Paragraph> até </Paragraph>
+              <Paragraph> {item.volta} </Paragraph>
+            </View>
+          </Card.Content>
+      </Card>
         </View>
     );
 }
@@ -58,13 +63,13 @@ const Bemvindo = ({route, navigation}) =>{
       </View>    
 
 
-      <View style={{justifyContent:"center", alignItems:"center", flex:1}} >
+      <View style={{justifyContent:"center", alignItems:"center"}} >
             <Carousel
-                    style={{height:200, width:500}}
+                    
                     ref={carosselRef}
                     data={dados}
                     renderItem={renderItem}
-                    sliderWidth= {300}
+                    sliderWidth= {500}
                     itemWidth = {300}
                     inactiveSlideOpacity = {0.5}
                     
@@ -147,11 +152,33 @@ const Bemvindo = ({route, navigation}) =>{
     title:{
       color: "blue",
       fontSize:20
-    }
+    },
+
+    card:{
+      marginTop:20,
+      width:"95%",
+      alignSelf:"center",
+      paddingTop:20
+      
+   },
+
+
+    datas:{
+      flexDirection:"row",
+      marginBottom:2
+      
+    },
+
+
+    imagem:{
+      alignSelf:"center",
+      
+      
+    },
+      
+      
+  })
+      
     
     
-    })
-    
-  
-  
-    export default Bemvindo
+  export default Bemvindo

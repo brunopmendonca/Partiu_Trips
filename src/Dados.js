@@ -91,6 +91,7 @@ const Dados = () =>{
                             buttonStyle = {style.botao}
                             titleStyle={{fontSize:23}}
                             onPress={HandIf}
+                            title={"Criar Viagem"}
                             />
                       </View>
           
