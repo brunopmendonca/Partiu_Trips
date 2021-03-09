@@ -7,7 +7,7 @@ import firebase from '../Firebaseconection'
 const Login = ({navigation}) =>{
   
 
-  const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
 
@@ -23,10 +23,9 @@ const Login = ({navigation}) =>{
         }).catch(()=>{
             window.alert("login nao funcionou")
         })
-      }
+    }
 
     const navegacao = () =>{
-
       navigation.navigate("Bemvindo")
 
     }
@@ -57,9 +56,6 @@ return (
 
 <View style= {style.login}>
 
-        
-    
-                
                   
                   <Text style={{color: "white", fontSize:28, marginLeft:24 }}>Login</Text>
                  
@@ -98,9 +94,6 @@ return (
                     <Text style={{color:"#EB6458", marginLeft:5}}>Cadastre-se</Text>
                   </TouchableHighlight>
                 </View>
-
-                
-
         
 
 </View>
@@ -186,7 +179,6 @@ const style = StyleSheet.create({
   paddingTop:10,
   paddingBottom:50,
   height:700
-  
   
   
   }

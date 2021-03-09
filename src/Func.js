@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import {  Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity  } from 'react-native';
 // import {Button} from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
@@ -6,6 +6,8 @@ import firebase from '../Firebaseconection'
 import { Appbar, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Platform } from 'react-native';
 import MapView from 'react-native-maps';
+import Constants from 'expo-constants';
+import * as Location from 'expo-location';
 
 const Func = ({navigation, route}) =>{
   
@@ -14,7 +16,40 @@ const Func = ({navigation, route}) =>{
   const [ida, setIda]= useState(route.params.ida)
   const [volta, setVolta]= useState(route.params.volta)
   const [imagem, setImagem]= useState(route.params.imagem)
+  const [regiao, setRegiao]= useState({latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,})
 
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+  
+    useEffect(() => {
+      (async () => {
+        if (Platform.OS === 'android' && !Constants.isDevice) {
+          setErrorMsg(
+            'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
+          );
+          return;
+        }
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
+  
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      })();
+    }, []);
+  
+    let text = 'Waiting..';
+    if (errorMsg) {
+      text = errorMsg;
+    } else if (location) {
+      text = JSON.stringify(location.coords.latitude);
+    }
+ 
 
 
 
@@ -23,6 +58,7 @@ return (
 
 
 <ScrollView>
+
       <View style= {style.header} >
           <Image source={require("../icons/simbolo.png")}/>
           <Text style={{fontSize:28, color:"#1E7987", textAlign:"center"}}>Viagem</Text>
@@ -77,6 +113,21 @@ return (
               </TouchableOpacity>
           
       </View>
+
+      
+          <MapView
+            style={style.mapa}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421}}
+          />
+
+        <View style={style.container}>
+          <Text style={style.paragraph}>{text}</Text>
+        </View>
+      
      
 
 </ScrollView>
@@ -152,8 +203,24 @@ const style = StyleSheet.create({
     
   },
 
-  
+  mapa:{
+    width:300,
+    height:300,
+    alignSelf:"center",
+    marginTop:20
+  },
 
+  paragraph: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  }
   
   })
   
