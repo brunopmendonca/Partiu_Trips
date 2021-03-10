@@ -9,8 +9,6 @@ import Carousel from 'react-native-snap-carousel';
 
 const dados = require('../icons/praia.png')
   
-  
-
 
 const Bemvindo = ({route, navigation}) =>{
 

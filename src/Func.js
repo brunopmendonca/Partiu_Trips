@@ -5,7 +5,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection'
 import { Appbar, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Platform } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
@@ -16,14 +16,13 @@ const Func = ({navigation, route}) =>{
   const [ida, setIda]= useState(route.params.ida)
   const [volta, setVolta]= useState(route.params.volta)
   const [imagem, setImagem]= useState(route.params.imagem)
-  const [regiao, setRegiao]= useState({latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,})
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [latitude, setLatitude] = useState();
+  const [text, setText] = useState();
+  const [longitude, setLongitude] = useState();
+  const [regiao, setRegiao]= useState()
 
-    const [location, setLocation] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
-  
     useEffect(() => {
       (async () => {
         if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -40,17 +39,24 @@ const Func = ({navigation, route}) =>{
   
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
+
+        if (errorMsg) {
+          setText(errorMsg) ;
+        } else if (location) {
+          setRegiao({latitude : location.coords.latitude , 
+            longitude : location.coords.longitude , 
+            latitudeDelta : 0.33 , 
+            longitudeDelta : 0.041 ,}) 
+        }
       })();
     }, []);
-  
-    let text = 'Waiting..';
-    if (errorMsg) {
-      text = errorMsg;
-    } else if (location) {
-      text = JSON.stringify(location.coords.latitude);
-    }
- 
 
+
+      
+    
+  
+   
+ 
 
 
 return ( 
@@ -117,16 +123,14 @@ return (
       
           <MapView
             style={style.mapa}
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421}}
+            initialRegion={regiao}
           />
 
         <View style={style.container}>
           <Text style={style.paragraph}>{text}</Text>
+          {/* <Text style={style.paragraph}>{latitude}</Text> */}
         </View>
+
       
      
 
