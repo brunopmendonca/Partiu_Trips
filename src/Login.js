@@ -3,9 +3,14 @@ import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-nati
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import firebase from '../Firebaseconection';
+import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
+
 
 const Login = ({ navigation }) => {
 
+  const fontsLoaded = useFonts({
+    Amarante_400Regular,
+  })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -110,7 +115,7 @@ const style = StyleSheet.create({
   titulo1: {
     fontSize: 55,
     color: "#EB6458",
-    fontFamily: 'Amarante_400Regular'
+    fontFamily: { fontsLoaded }
   },
 
   titulo2: {
