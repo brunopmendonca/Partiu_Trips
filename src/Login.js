@@ -96,7 +96,6 @@ const Login = ({ navigation }) => {
 
 const style = StyleSheet.create({
 
-
   simbolo: {
     height: "20%",
     alignItems: "baseline",
@@ -115,7 +114,7 @@ const style = StyleSheet.create({
   titulo1: {
     fontSize: 55,
     color: "#EB6458",
-    fontFamily: { fontsLoaded }
+    // fontFamily: { fontsLoaded }
   },
 
   titulo2: {

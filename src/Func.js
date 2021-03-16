@@ -50,6 +50,17 @@ const Func = ({ navigation, route }) => {
     })();
   }, []);
 
+
+  const navGastos = () => {
+    navigation.navigate("Gastos")
+
+  }
+
+  const navArquivos = () => {
+    navigation.navigate("Arquivos")
+
+  }
+
   return (
 
     <ScrollView>
@@ -74,14 +85,14 @@ const Func = ({ navigation, route }) => {
 
       <View style={style.grupo}>
 
-        <TouchableOpacity style={style.opcao} >
+        <TouchableOpacity style={style.opcao} onPress={navGastos} >
           <Image style={style.iconi} source={require("../icons/image_8.png")} />
           <Text style={style.textoOpcao}> Gastos </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.opcao} >
+        <TouchableOpacity style={style.opcao} onPress={navArquivos} >
           <Image style={style.iconi} source={require("../icons/image_9.png")} />
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Arquivos </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
