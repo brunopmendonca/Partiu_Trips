@@ -8,6 +8,7 @@ import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
 
 const Login = ({ navigation }) => {
 
+
   const fontsLoaded = useFonts({
     Amarante_400Regular,
   })
@@ -32,6 +33,7 @@ const Login = ({ navigation }) => {
     navigation.navigate("Bemvindo")
 
   }
+
 
   return (
 
@@ -96,7 +98,6 @@ const Login = ({ navigation }) => {
 
 const style = StyleSheet.create({
 
-
   simbolo: {
     height: "20%",
     alignItems: "baseline",
@@ -115,7 +116,7 @@ const style = StyleSheet.create({
   titulo1: {
     fontSize: 55,
     color: "#EB6458",
-    fontFamily: { fontsLoaded }
+    // fontFamily: { fontsLoaded }
   },
 
   titulo2: {
