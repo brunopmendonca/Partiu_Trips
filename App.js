@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaView, SafeAreaViewComponent } from 'react-native';
 import React from 'react';
 
+
 import Login from './src/Login';
 import Cadastro from './src/Cadastro';
 import Bemvindo from './src/Bemvindo';
@@ -16,8 +17,7 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
 
-
-    <NavigationContainer  >
+    < NavigationContainer >
       <Stack.Navigator>
         <Stack.Screen name='Login' component={Login} options={{ title: "Home" }} />
         <Stack.Screen name='Cadastro' component={Cadastro} />
@@ -27,7 +27,8 @@ export default function App() {
         <Stack.Screen name='Gastos' component={Gastos} />
         <Stack.Screen name='Arquivos' component={Arquivos} />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer >
+
 
   );
 }

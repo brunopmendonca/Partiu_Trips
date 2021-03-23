@@ -8,6 +8,7 @@ import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
 
 const Login = ({ navigation }) => {
 
+
   const fontsLoaded = useFonts({
     Amarante_400Regular,
   })
@@ -32,6 +33,7 @@ const Login = ({ navigation }) => {
     navigation.navigate("Bemvindo")
 
   }
+
 
   return (
 
