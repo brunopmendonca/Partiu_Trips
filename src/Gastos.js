@@ -1,5 +1,5 @@
 import React, { useState, Component, useRef } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, FlatList, DatePickerAndroid, SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, Image, Modal, ScrollView, TouchableOpacity, FlatList, TouchableHighlight, SafeAreaView, Alert } from 'react-native';
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
@@ -18,6 +18,9 @@ const Gastos = () => {
     const [id, setId] = useState()
     const [quantidade, setQuantidade] = useState(1)
     const [lista, setLista] = useState([])
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible1, setModalVisible1] = useState(false);
+    const [moedaSelecionada, setMoedaSelecionada] = useState()
 
 
 
@@ -70,6 +73,8 @@ const Gastos = () => {
         )
 
     }
+
+
 
     console.log(Data)
     console.log(lista)
@@ -165,6 +170,7 @@ const Gastos = () => {
 
 
             <View style={style.body}>
+
                 <View style={style.entradasGrupo}>
                     <Input style={style.entradas} placeholder="Item" onChangeText={onChangeItem} placeholderTextColor="#fff" />
                     <Input style={style.entradas} placeholder="valor" onChangeText={onChangeValor} keyboardType="numeric" placeholderTextColor="#fff" />
@@ -172,11 +178,174 @@ const Gastos = () => {
 
                 <Button buttonStyle={style.botao} title="marcar" onPress={Handbotton} />
 
+                <View style={style.modal}>
+                    <View style={style.centeredView}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible1}
+                            onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                            }}>
+                            <View style={style.centeredView}>
+                                <View style={style.modalView}>
+                                    <Text style={style.modalText}>Escolha a moeda que ira utilizar nessa viagem</Text>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            setMoedaSelecionada("Dolar")
+                                        }}>
+                                        <Text>Dolar</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            setMoedaSelecionada("Euro")
+                                        }}>
+                                        <Text>Euro</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            setMoedaSelecionada("Libra")
+                                        }}>
+                                        <Text>Libra</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            setMoedaSelecionada("Peso")
+                                        }}>
+                                        <Text>Peso Argentino</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            setMoedaSelecionada("Dolar (C)")
+                                        }}>
+                                        <Text>Dolar Canadense</Text>
+                                    </TouchableOpacity>
+
+
+
+                                    <TouchableHighlight
+
+                                        style={{ ...style.openButton, backgroundColor: '#2196F3' }}
+                                        onPress={() => {
+                                            setModalVisible1(!modalVisible1);
+                                        }}>
+                                        <Text style={style.textStyle}>Fechar</Text>
+                                    </TouchableHighlight>
+                                </View>
+                            </View>
+                        </Modal>
+
+                        <TouchableHighlight
+                            style={style.openButton}
+                            onPress={() => {
+                                setModalVisible1(true);
+                            }}>
+                            <Text style={style.textStyle}>Selecione a Moeda</Text>
+                        </TouchableHighlight>
+                    </View>
+
+                    <View style={style.centeredView}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                            }}>
+                            <View style={style.centeredView}>
+                                <View style={style.modalView}>
+                                    <Text style={style.modalText}>Sua moeda utilizado foi {moedaSelecionada}. Desesa converter para qual moeda?</Text>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            //  setMoeda(api[0].euro)
+                                            //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
+                                            window.alert((valorTotal * api[0].dolar).toFixed(2))
+                                        }}>
+                                        <Text>Dolar</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            //  setMoeda(api[0].euro)
+                                            //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
+                                            window.alert((valorTotal * api[0].euro).toFixed(2))
+                                        }}>
+                                        <Text>Euro</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            //  setMoeda(api[0].euro)
+                                            //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
+                                            window.alert((valorTotal * api[0].pesoArgentivo).toFixed(2))
+                                        }}>
+                                        <Text>Peso</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            //  setMoeda(api[0].euro)
+                                            //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
+                                            window.alert((valorTotal * api[0].libra).toFixed(2))
+                                        }}>
+                                        <Text>Libra</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={style.opçoesMoeda}
+                                        onPress={() => {
+                                            //  setMoeda(api[0].euro)
+                                            //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
+                                            window.alert((valorTotal * api[0].dolarCanadense).toFixed(2))
+                                        }}>
+                                        <Text>Dolar (C)</Text>
+                                    </TouchableOpacity>
+
+
+                                    <TouchableHighlight
+                                        style={{ ...style.openButton, backgroundColor: '#2196F3' }}
+                                        onPress={() => {
+                                            setModalVisible(!modalVisible);
+                                        }}>
+                                        <Text style={style.textStyle}>Fechar</Text>
+                                    </TouchableHighlight>
+
+                                </View>
+                            </View>
+                        </Modal>
+
+
+
+                        <TouchableHighlight
+                            style={style.openButton}
+                            onPress={() => {
+                                setModalVisible(true);
+                            }}>
+                            <Text style={style.textStyle}>Converter para Real</Text>
+                        </TouchableHighlight>
+                    </View>
+
+                </View>
 
                 <Card style={style.card}>
                     <Card.Content>
-                        <Title style={style.title} >Valor (Real)</Title>
-                        <Paragraph> R$ {valorTotal} </Paragraph>
+                        <Title style={style.title} >Valor em: {moedaSelecionada}</Title>
+                        <Paragraph>  {valorTotal} </Paragraph>
                         <View style={style.lista} >
                             <FlatList
                                 data={Data}
@@ -186,55 +355,6 @@ const Gastos = () => {
                         </View>
                     </Card.Content>
                 </Card>
-
-
-                <List.Section style={style.conversor} >
-                    <List.Accordion style={style.textOptions}
-                        title="Converter moeda"
-                        left={props => <List.Icon {...props} />}>
-                        <TouchableOpacity onPress={() => {
-                            //setMoeda(api[0].dolar)
-                            //   let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                            window.alert((valorTotal * api[0].dolar).toFixed(2))
-                        }}>
-                            <List.Item color="#fff" title="Dolar" />
-                        </TouchableOpacity >
-
-                        <TouchableOpacity
-                            onPress={() => {
-                                //  setMoeda(api[0].euro)
-                                //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                                window.alert((valorTotal * api[0].euro).toFixed(2))
-                            }}>
-                            <List.Item title="Euro" />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => {
-                            // setMoeda(api[0].pesoArgentino)
-                            // let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                            window.alert((valorTotal * api[0].pesoArgentino).toFixed(2))
-                        }}>
-                            <List.Item title="Peso Argentino" />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => {
-                            setMoeda(api[0].libra)
-                            let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                            window.alert((valorTotal * api[0].libra).toFixed(2))
-                        }}>
-                            <List.Item title="libra" />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => {
-                            //  setMoeda(api[0].dolarCanadense)
-                            // let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                            window.alert((valorTotal * api[0].dolarCanadense).toFixed(2))
-                        }}>
-                            <List.Item title="Dolar Canadense" />
-                        </TouchableOpacity>
-
-                    </List.Accordion>
-                </List.Section>
             </View>
 
 
@@ -281,6 +401,21 @@ const style = StyleSheet.create({
         alignSelf: "center"
     },
 
+    modal: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+
+    opçoesMoeda: {
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "grey",
+        width: 200,
+        height: 40,
+        borderRadius: 20,
+        marginTop: 20
+    },
+
     card: {
 
         backgroundColor: "#FFF",
@@ -288,8 +423,6 @@ const style = StyleSheet.create({
         justifyContent: "center",
         padding: 5,
         flex: 1
-
-
 
     },
 
@@ -305,7 +438,9 @@ const style = StyleSheet.create({
 
     textOptions: {
         color: "#fff",
-        flex: 1
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "space-around"
     },
 
     conversor: {
@@ -340,7 +475,48 @@ const style = StyleSheet.create({
         borderRadius: 40,
         padding: 5
 
-    }
+    },
+
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        flexDirection: "column",
+        alignItems: "stretch",
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    openButton: {
+        backgroundColor: '#EB6458',
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        marginTop: 20
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+
 
 
 
