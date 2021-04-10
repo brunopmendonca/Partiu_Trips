@@ -23,9 +23,6 @@ const Gastos = () => {
     const [moedaSelecionada, setMoedaSelecionada] = useState()
 
 
-
-
-
     let res = axios.get('https://economia.awesomeapi.com.br/json/all').then(response => {
         api.push({
             dolar: response.data.USD.bid,
@@ -291,7 +288,7 @@ const Gastos = () => {
                                         onPress={() => {
                                             //  setMoeda(api[0].euro)
                                             //  let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                                            window.alert((valorTotal * api[0].pesoArgentivo).toFixed(2))
+                                            window.alert((valorTotal * api[0].pesoArgentino).toFixed(2))
                                         }}>
                                         <Text>Peso</Text>
                                     </TouchableOpacity>

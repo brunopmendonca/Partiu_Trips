@@ -22,17 +22,32 @@ const Cadastro = ({ navigation }) => {
     setConfPassword(txtConfPassword)
   }
 
-  const cadastration = () => {
-    if (confPassword == password) {
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+  async function sendForm() {
+    let response = await fetch("http://192.168.15.37:3000/cadastro", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: email,
+        password: password,
+        confirmacao: confPassword
 
-      }).catch(() => {
-        window.alert("login nao funcionou")
       })
-    } else (
-      window.alert("senha nao bate")
-    )
+    })
   }
+  // const cadastration = () => {
+  //   if (confPassword == password) {
+  //     firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+
+  //     }).catch(() => {
+  //       window.alert("login nao funcionou")
+  //     })
+  //   } else (
+  //     window.alert("senha nao bate")
+  //   )
+  // }
 
   return (
 
@@ -68,7 +83,7 @@ const Cadastro = ({ navigation }) => {
             <Button
               buttonStyle={style.botao}
               title="Cadastrar"
-              onPress={cadastration}
+              onPress={sendForm}
               titleStyle={{ fontSize: 23 }}
             />
           </View>

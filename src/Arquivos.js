@@ -1,14 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, FlatList, DatePickerAndroid } from 'react-native';
 import { Button, Input } from 'react-native-elements'
-import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper'
+import { Appbar, Avatar, Card, Title, Paragraph, List } from 'react-native-paper'
 import Carousel from 'react-native-snap-carousel';
 import { set } from 'react-native-reanimated';
-import * as Random from 'expo-random';
-import { v4 as uuidv4 } from 'uuid'
-
-var uuid = require('react-native-uuid');
-
 
 
 const Arquivos = ({ route, navigation }) => {
@@ -21,6 +16,9 @@ const Arquivos = ({ route, navigation }) => {
     const [nada, setNada] = useState(0)
     const [ide, setIde] = useState()
     const [value, setValue] = useState([])
+    const [expanded, setExpanded] = React.useState(true);
+
+    const handlePress = () => setExpanded(!expanded);
 
 
     const onChangeItem = (e) => {
