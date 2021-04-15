@@ -21,18 +21,51 @@ const Login = ({ navigation }) => {
   const onChangePassword = (txtPassword) => {
     setPassword(txtPassword)
   }
-  const login = () => {
-    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-      navegacao()
-    }).catch(() => {
-      window.alert("login nao funcionou")
+
+  async function sendForm() {
+
+    let response = await fetch("http://192.168.15.37:3000/login", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: email,
+        password: password,
+
+      })
+
     })
+
+    let json = await response.json()
+    console.log(json.id)
+
+    if (json == null) {
+      window.alert("nao possui cadastro")
+    }
+    else (
+      navigation.navigate("PrimeiraTela", { id: json.id, nome: json.name })
+    )
+
   }
 
-  const navegacao = () => {
-    navigation.navigate("Bemvindo")
 
-  }
+
+  // const login = () => {
+  //   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+  //     navegacao()
+  //   }).catch(() => {
+  //     window.alert("login nao funcionou")
+  //   })
+  // }
+
+  // const navegacao = () => {
+  //   navigation.navigate("Bemvindo")
+
+  // }
+
+
 
 
   return (
@@ -68,7 +101,7 @@ const Login = ({ navigation }) => {
           <Button
             buttonStyle={style.botao}
             title="Entrar"
-            onPress={login}
+            onPress={sendForm}
           />
         </View>
 
