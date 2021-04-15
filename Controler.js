@@ -17,16 +17,50 @@ let gasto = models.Gasto
 
 app.post("/cadastro", async (req, res) => {
 
-    let create = await user.create({
-        name: req.body.name,
-        password: req.body.password,
-        createdAt: "1",
-        updatedAt: "1"
-
+    let response = await user.findOne({
+        where: { name: req.body.name, password: req.body.password }
     })
-    res.send("servidor rodando")
 
-    console.log(req.body.name)
+    // console.log(response)
+
+    if (response == null) {
+        res.send(JSON.stringify("cadastro feito com sucesso"))
+        let create = user.create({
+            name: req.body.name,
+            password: req.body.password,
+            createdAt: "1",
+            updatedAt: "1"
+
+        })
+
+    } else (
+        res.send(JSON.stringify("ja possui cadastro"))
+    )
+
+})
+
+app.post("/login", async (req, res) => {
+
+    let response = await user.findOne({
+        where: { name: req.body.name, password: req.body.password }
+    })
+
+
+    res.send(JSON.stringify(response))
+
+    // if (response == null) {
+    //     res.send(JSON.stringify("cadastro feito com sucesso"))
+    //     let create = user.create({
+    //         name: req.body.name,
+    //         password: req.body.password,
+    //         createdAt: "1",
+    //         updatedAt: "1"
+
+    //     })
+
+    // } else (
+    //     res.send(JSON.stringify("ja possui cadastro"))
+    // )
 
 })
 
@@ -43,6 +77,20 @@ app.listen(port, (req, res) => {
 
 
 
+// app.post("/cadastro", async (req, res) => {
+
+//     let create = await user.create({
+//         name: req.body.name,
+//         password: req.body.password,
+//         createdAt: "1",
+//         updatedAt: "1"
+
+//     })
+//     res.send("servidor rodando")
+
+//     console.log(req.body.name)
+
+// })
 
 
 

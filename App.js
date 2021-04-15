@@ -11,6 +11,7 @@ import Dados from './src/Dados';
 import Func from "./src/Func"
 import Gastos from "./src/Gastos"
 import Arquivos from "./src/Arquivos"
+import PrimeiraTela from "./src/PrimeiraTela"
 
 const Stack = createStackNavigator()
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name='Func' component={Func} />
         <Stack.Screen name='Gastos' component={Gastos} />
         <Stack.Screen name='Arquivos' component={Arquivos} />
+        <Stack.Screen name='PrimeiraTela' component={PrimeiraTela} />
       </Stack.Navigator>
     </NavigationContainer >
 
