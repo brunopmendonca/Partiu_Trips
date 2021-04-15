@@ -28,6 +28,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      gastos: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
     });
   },

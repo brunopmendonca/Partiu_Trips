@@ -48,19 +48,14 @@ app.post("/login", async (req, res) => {
 
     res.send(JSON.stringify(response))
 
-    // if (response == null) {
-    //     res.send(JSON.stringify("cadastro feito com sucesso"))
-    //     let create = user.create({
-    //         name: req.body.name,
-    //         password: req.body.password,
-    //         createdAt: "1",
-    //         updatedAt: "1"
+})
 
-    //     })
-
-    // } else (
-    //     res.send(JSON.stringify("ja possui cadastro"))
-    // )
+app.get('/update', async (req, res) => {
+    let update = await user.findByPk(1).then((response) => {
+        response.name = "brubuno2"
+        response.save()
+        console.log(JSON.stringify(response))
+    })
 
 })
 
