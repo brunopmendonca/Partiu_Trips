@@ -8,11 +8,13 @@ import * as Location from 'expo-location';
 
 const Func = ({ navigation, route }) => {
 
+  console.log(route.params)
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const [ida, setIda] = useState(route.params.ida)
   const [volta, setVolta] = useState(route.params.volta)
   const [imagem, setImagem] = useState(route.params.imagem)
+  const [lugar, setIlugar] = useState(route.params.lugar)
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [latitude, setLatitude] = useState();
@@ -52,7 +54,7 @@ const Func = ({ navigation, route }) => {
 
 
   const navGastos = () => {
-    navigation.navigate("Gastos")
+    navigation.navigate("Gastos", { userId: route.params.userId, id: route.params.id })
 
   }
 
@@ -74,7 +76,7 @@ const Func = ({ navigation, route }) => {
       <Card style={style.card}>
         <Card.Cover style={style.imagem} source={imagem} />
         <Card.Content>
-          <Title>Card title</Title>
+          <Title>{lugar}</Title>
           <View style={style.datas}>
             <Paragraph>{ida}</Paragraph>
             <Paragraph> até </Paragraph>

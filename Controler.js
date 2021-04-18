@@ -45,18 +45,52 @@ app.post("/login", async (req, res) => {
         where: { name: req.body.name, password: req.body.password }
     })
 
-
     res.send(JSON.stringify(response))
 
 })
 
-app.get('/update', async (req, res) => {
-    let update = await user.findByPk(1).then((response) => {
-        response.name = "brubuno2"
-        response.save()
-        console.log(JSON.stringify(response))
+app.post('/viagens', async (req, res) => {
+    // console.log(req.body)
+    let update = await user.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Viagems))
+        res.send(JSON.stringify(response.Viagems))
     })
 
+})
+
+app.post('/lista', async (req, res) => {
+
+    console.log(req.body)
+
+    let create = viagem.create({
+        ida: req.body.ida,
+        volta: req.body.volta,
+        imagem: req.body.imagem,
+        userId: req.body.user,
+        lugar: req.body.lugar,
+        createdAt: "1",
+        updatedAt: "1"
+
+    })
+
+    console.log(create)
+})
+
+app.post('/gasto', async (req, res) => {
+
+    console.log(req.body)
+
+    let create = gasto.create({
+        viagemId: req.body.id,
+        lista: req.body.lista,
+        valor: req.body.valor,
+        quantidade: req.body.quantidade,
+        createdAt: "1",
+        updatedAt: "1"
+
+    })
+
+    console.log(create)
 })
 
 

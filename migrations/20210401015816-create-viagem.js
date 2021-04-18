@@ -35,7 +35,6 @@ module.exports = {
         type: Sequelize.DATE
       },
       imagem: {
-        allowNull: false,
         type: Sequelize.STRING
       }
     });

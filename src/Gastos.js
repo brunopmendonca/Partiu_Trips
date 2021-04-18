@@ -5,8 +5,9 @@ import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
 import ReactNativePickerModule from "react-native-picker-module"
 
-const Gastos = () => {
+const Gastos = ({ route }) => {
 
+    console.log(route.params)
     const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
     const [item, setItem] = useState(" ")
     const [valor, setValor] = useState(0)
@@ -49,7 +50,7 @@ const Gastos = () => {
 
     }
 
-    const Handbotton = () => {
+    const Handbotton = async () => {
 
         if (item.length > 0 && valor > 0) {
             Data.push({
@@ -63,6 +64,28 @@ const Gastos = () => {
 
             let total = Data.reduce((total, preco) => total + preco.valor, 0)
             setValorTotal(total.toFixed(2))
+
+
+            let response = await fetch("http://192.168.15.37:3000/gasto", {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: route.params.id,
+                    valor: valor,
+                    lista: item,
+                    quantidade: quantidade
+
+                })
+
+            })
+
+            let json = await response.json()
+            console.log(json)
+
+
 
         }
         else (

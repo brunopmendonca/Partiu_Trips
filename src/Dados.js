@@ -6,18 +6,43 @@ import DatePicker from "react-native-datepicker"
 import { useNavigation } from "@react-navigation/native"
 
 
-const Dados = () => {
+const Dados = ({ route }) => {
 
-  const navigation = useNavigation()
+
 
   const [ida, setIda] = useState('')
   const [volta, setVolta] = useState('')
   const [imagem, setImagem] = useState('')
+  const [user, setuser] = useState(route.params.id)
+  const [lugar, setLugar] = useState()
 
 
-  const HandIf = () => {
-    navigation.navigate('Bemvindo', { ida: ida, volta: volta, imagem: imagem })
+  async function sendForm() {
+
+    let response = await fetch("http://192.168.15.37:3000/lista", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ida: ida,
+        volta: volta,
+        imagem: imagem,
+        user: user,
+        lugar: lugar
+
+
+      })
+
+    })
+
+    let json = await response.json()
+    console.log(json)
+
   }
+
+
 
   return (
 
@@ -36,7 +61,7 @@ const Dados = () => {
         <View style={{ flex: 1, marginBottom: 20, marginTop: 20, }}>
 
           <View style={style.input}>
-            <TextInput style={{ borderBottomWidth: 1, borderColor: "#fff", fontSize: 20, height: "30%", marginBottom: 20 }} placeholder="Lugar" placeholderTextColor="#fff" onChangeText={txtEmail => onChangeEmail(txtEmail)} />
+            <TextInput style={{ borderBottomWidth: 1, borderColor: "#fff", fontSize: 20, height: "30%", marginBottom: 20 }} placeholder="Lugar" placeholderTextColor="#fff" onChangeText={txtEmail => setLugar(txtEmail)} />
             <DatePicker onDateChange={(e) => { setIda(e) }} style={{ borderBottomWidth: 1, borderColor: "#fff", fontSize: 20, height: "30%", width: "100%" }} date={ida} format="DD-MM-YYYY" />
             <DatePicker onDateChange={(e) => { setVolta(e) }} style={{ borderBottomWidth: 1, borderColor: "#fff", fontSize: 20, height: "30%", width: "100%" }} date={volta} format="DD-MM-YYYY" />
           </View>
@@ -44,21 +69,21 @@ const Dados = () => {
           <View style={{ height: "50%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
 
             <View style={{ flexDirection: "column" }}>
-              <TouchableHighlight onPress={() => { setImagem(require('../icons/praia.png')) }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
+              <TouchableHighlight onPress={() => { setImagem('praia') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/praia.png")} />
               </TouchableHighlight>
-              <TouchableHighlight onPress={() => { setImagem(require("../icons/inverno.png")) }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
+              <TouchableHighlight onPress={() => { setImagem("inverso") }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/inverno.png")} />
               </TouchableHighlight>
             </View>
 
             <View style={{ flexDirection: "column" }}>
 
-              <TouchableHighlight onPress={() => { setImagem(require("../icons/montanha.png")) }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
+              <TouchableHighlight onPress={() => { setImagem('montanha') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/montanha.png")} />
               </TouchableHighlight>
 
-              <TouchableHighlight onPress={() => { setImagem(require("../icons/cidade.png")) }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
+              <TouchableHighlight onPress={() => { setImagem('cidade') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/cidade.png")} />
               </TouchableHighlight>
 
@@ -70,7 +95,7 @@ const Dados = () => {
             <Button
               buttonStyle={style.botao}
               titleStyle={{ fontSize: 23 }}
-              onPress={HandIf}
+              onPress={sendForm}
               title={"Criar Viagem"}
             />
           </View>
