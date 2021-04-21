@@ -53,8 +53,26 @@ const Func = ({ navigation, route }) => {
   }, []);
 
 
-  const navGastos = () => {
-    navigation.navigate("Gastos", { userId: route.params.userId, id: route.params.id })
+
+
+
+  const navGastos = async () => {
+
+    let response = await fetch("http://192.168.15.37:3000/gasto", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: route.params.id,
+      })
+
+    })
+
+    var json = await response.json()
+    navigation.navigate("Gastos", json)
+
 
   }
 

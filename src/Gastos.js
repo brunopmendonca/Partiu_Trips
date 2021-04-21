@@ -4,10 +4,11 @@ import { Button, Input } from 'react-native-elements'
 import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
 import ReactNativePickerModule from "react-native-picker-module"
+// import { json } from 'express';
 
 const Gastos = ({ route }) => {
 
-    console.log(route.params)
+
     const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
     const [item, setItem] = useState(" ")
     const [valor, setValor] = useState(0)
@@ -22,6 +23,32 @@ const Gastos = ({ route }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
     const [moedaSelecionada, setMoedaSelecionada] = useState()
+    const [dadosApi, setDadosApi] = useState(route.params)
+    console.log(dadosApi)
+
+
+    async function sendForm2() {
+
+        let response = await fetch("http://192.168.15.37:3000/enviarGasto", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                lista: item,
+                viagemId: route.params.id,
+                valor: valor,
+                quantidade: quantidade
+            })
+
+        })
+
+        let json = await response.json()
+        //  console.log(json)
+    }
+
+
 
 
     let res = axios.get('https://economia.awesomeapi.com.br/json/all').then(response => {
@@ -34,6 +61,10 @@ const Gastos = ({ route }) => {
 
 
         })
+
+
+
+
     }).catch(() => {
         console.log('Error retrieving data')
     })
@@ -53,39 +84,8 @@ const Gastos = ({ route }) => {
     const Handbotton = async () => {
 
         if (item.length > 0 && valor > 0) {
-            Data.push({
-                valori: valor,
-                item: item,
-                valor: valor,
-                id: Data.length,
-                quantidade: quantidade
-            })
 
-
-            let total = Data.reduce((total, preco) => total + preco.valor, 0)
-            setValorTotal(total.toFixed(2))
-
-
-            let response = await fetch("http://192.168.15.37:3000/gasto", {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: route.params.id,
-                    valor: valor,
-                    lista: item,
-                    quantidade: quantidade
-
-                })
-
-            })
-
-            let json = await response.json()
-            console.log(json)
-
-
+            sendForm2()
 
         }
         else (
@@ -94,10 +94,6 @@ const Gastos = ({ route }) => {
 
     }
 
-
-
-    console.log(Data)
-    console.log(lista)
 
     const renderItem = ({ item }) => {
 
@@ -114,7 +110,7 @@ const Gastos = ({ route }) => {
         return (
             <View style={style.resultados}>
                 <Text style={{ fontSize: 18 }}>
-                    {item.item}
+                    {item.lista}
                 </Text>
                 <View style={{ fontSize: 18, flexDirection: "row", }}>
 
@@ -368,7 +364,7 @@ const Gastos = ({ route }) => {
                         <Paragraph>  {valorTotal} </Paragraph>
                         <View style={style.lista} >
                             <FlatList
-                                data={Data}
+                                data={dadosApi}
                                 renderItem={renderItem}
                                 keyExtractor={item => item.item}
                             />
@@ -545,3 +541,18 @@ const style = StyleSheet.create({
 
 
 export default Gastos
+
+
+
+// Data.push({
+
+//     valori: valor,
+//     item: item,
+//     valor: valor,
+//     id: Data.length,
+//     quantidade: quantidade
+// })
+
+
+// let total = Data.reduce((total, preco) => total + preco.valor, 0)
+// setValorTotal(total.toFixed(2))

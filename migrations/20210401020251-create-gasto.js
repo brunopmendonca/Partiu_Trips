@@ -32,7 +32,17 @@ module.exports = {
       gastos: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+
+      valor: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      quantidade: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
+
     });
   },
   down: async (queryInterface, Sequelize) => {

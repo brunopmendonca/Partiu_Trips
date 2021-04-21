@@ -78,20 +78,40 @@ app.post('/lista', async (req, res) => {
 
 app.post('/gasto', async (req, res) => {
 
+    let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos))
+    })
+
+
+})
+
+app.post('/enviarGasto', async (req, res) => {
+
     console.log(req.body)
 
     let create = gasto.create({
-        viagemId: req.body.id,
+
         lista: req.body.lista,
+        viagemId: req.body.viagemId,
         valor: req.body.valor,
         quantidade: req.body.quantidade,
-        createdAt: "1",
-        updatedAt: "1"
+
 
     })
 
-    console.log(create)
 })
+
+// app.post('/gasto', async (req, res) => {
+
+//     let update = await viagem.findByPk(15, { include: [{ all: true }] }).then((response) => {
+//         console.log(JSON.stringify(response.Gastos))
+//         res.send(JSON.stringify(response))
+//     })
+
+
+
+// })
 
 
 
@@ -101,6 +121,18 @@ app.listen(port, (req, res) => {
     console.log("servidor rodando")
 })
 
+
+    //  console.log(req.body)
+
+    // let create = await gasto.create({
+    //     viagemId: req.body.id,
+    //     lista: req.body.lista,
+    //     valor: req.body.valor,
+    //     quantidade: req.body.quantidade,
+    //     createdAt: "1",
+    //     updatedAt: "1"
+
+    // })
 
 
 
