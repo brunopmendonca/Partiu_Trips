@@ -8,7 +8,6 @@ import ReactNativePickerModule from "react-native-picker-module"
 
 const Gastos = ({ route }) => {
 
-
     const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
     const [item, setItem] = useState(" ")
     const [valor, setValor] = useState(0)
@@ -24,7 +23,11 @@ const Gastos = ({ route }) => {
     const [modalVisible1, setModalVisible1] = useState(false);
     const [moedaSelecionada, setMoedaSelecionada] = useState()
     const [dadosApi, setDadosApi] = useState(route.params)
-    console.log(dadosApi)
+    const [viagemId, setViagemId] = useState(dadosApi[1])
+    const [BancoDeDados, setBancoDeDados] = useState(dadosApi[0])
+
+
+    console.log(viagemId)
 
 
     async function sendForm2() {
@@ -37,7 +40,7 @@ const Gastos = ({ route }) => {
             },
             body: JSON.stringify({
                 lista: item,
-                viagemId: route.params.id,
+                viagemId: viagemId,
                 valor: valor,
                 quantidade: quantidade
             })
@@ -45,10 +48,31 @@ const Gastos = ({ route }) => {
         })
 
         let json = await response.json()
-        //  console.log(json)
+        console.log(json)
+        setBancoDeDados(json)
     }
 
+    async function deleteSendForm(parametro, paramentro2) {
 
+        let response = await fetch("http://192.168.15.37:3000/deletarGasto", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: parametro,
+                userId: paramentro2
+
+            })
+
+        })
+
+        let json = await response.json()
+        console.log(json)
+        setBancoDeDados(json)
+
+    }
 
 
     let res = axios.get('https://economia.awesomeapi.com.br/json/all').then(response => {
@@ -61,9 +85,6 @@ const Gastos = ({ route }) => {
 
 
         })
-
-
-
 
     }).catch(() => {
         console.log('Error retrieving data')
@@ -97,9 +118,9 @@ const Gastos = ({ route }) => {
 
     const renderItem = ({ item }) => {
 
-        const ide = Data.findIndex(a => {
-            return a === item
-        })
+        // const ide = Data.findIndex(a => {
+        //     return a === item
+        // })
 
 
         // if (item.quantidade > 0) {
@@ -161,11 +182,7 @@ const Gastos = ({ route }) => {
 
                     <Button title="deletar"
                         buttonStyle={{ alignSelf: "center", marginRight: 10 }}
-                        onPress={() => {
-                            Data.splice(ide, 1)
-                            let total = Data.reduce((total, preco) => total + preco.valor, 0)
-                            setValorTotal(total.toFixed(2))
-                        }} />
+                        onPress={() => { deleteSendForm(item.id, item.viagemId) }} />
                 </View>
 
             </View>
@@ -364,7 +381,7 @@ const Gastos = ({ route }) => {
                         <Paragraph>  {valorTotal} </Paragraph>
                         <View style={style.lista} >
                             <FlatList
-                                data={dadosApi}
+                                data={BancoDeDados}
                                 renderItem={renderItem}
                                 keyExtractor={item => item.item}
                             />
@@ -532,8 +549,6 @@ const style = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
     },
-
-
 
 
 })

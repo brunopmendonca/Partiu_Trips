@@ -102,6 +102,19 @@ app.post('/enviarGasto', async (req, res) => {
 
 })
 
+app.post('/deletarGasto', async (req, res) => {
+    console.log(req.body)
+    let deletar = await gasto.destroy({
+        where: { id: req.body.id }
+    })
+
+    let update = await viagem.findByPk(req.body.userId, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos))
+    })
+
+})
+
 // app.post('/gasto', async (req, res) => {
 
 //     let update = await viagem.findByPk(15, { include: [{ all: true }] }).then((response) => {

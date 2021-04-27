@@ -71,7 +71,10 @@ const Func = ({ navigation, route }) => {
     })
 
     var json = await response.json()
-    navigation.navigate("Gastos", json)
+    console.log(json.length)
+    navigation.navigate("Gastos", [json, route.params.id])
+
+
 
 
   }
