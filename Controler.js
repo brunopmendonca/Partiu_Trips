@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const models = require('./models')
+//const { default: Gastos } = require("./src/Gastos")
 
 //const { all } = require("sequelize/types/lib/operators")
 
@@ -83,21 +84,24 @@ app.post('/gasto', async (req, res) => {
         res.send(JSON.stringify(response.Gastos))
     })
 
-
 })
 
 app.post('/enviarGasto', async (req, res) => {
 
     console.log(req.body)
 
-    let create = gasto.create({
+    let create = await gasto.create({
 
         lista: req.body.lista,
         viagemId: req.body.viagemId,
         valor: req.body.valor,
         quantidade: req.body.quantidade,
 
+    })
 
+    let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos))
     })
 
 })
@@ -108,17 +112,55 @@ app.post('/deletarGasto', async (req, res) => {
         where: { id: req.body.id }
     })
 
-    let update = await viagem.findByPk(req.body.userId, { include: [{ all: true }] }).then((response) => {
+    let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
         console.log(JSON.stringify(response.Gastos))
         res.send(JSON.stringify(response.Gastos))
     })
 
 })
 
+app.post('/adicionarQuantidade', async (req, res) => {
+    console.log(req.body)
+    let update = await gasto.findAll({
+        where: { viagemId: req.body.viagemId }
+    }).then((response) => {
+        let indexId = response.findIndex(a => {
+            return a.id == req.body.id
+        })
+        response[indexId].quantidade = response[indexId].quantidade + 1
+        response[indexId].save()
+        res.send(JSON.stringify(response))
+
+
+    })
+
+
+})
+
+app.post('/retirarQuantidade', async (req, res) => {
+    console.log(req.body)
+    let update = await gasto.findAll({
+        where: { viagemId: req.body.viagemId }
+    }).then((response) => {
+        let indexId = response.findIndex(a => {
+            return a.id == req.body.id
+        })
+        response[indexId].quantidade = response[indexId].quantidade - 1
+        response[indexId].save()
+        res.send(JSON.stringify(response))
+
+
+    })
+
+
+})
+
+
+
 // app.post('/gasto', async (req, res) => {
 
 //     let update = await viagem.findByPk(15, { include: [{ all: true }] }).then((response) => {
-//         console.log(JSON.stringify(response.Gastos))
+//        // console.log(JSON.stringify(response.Gastos))
 //         res.send(JSON.stringify(response))
 //     })
 

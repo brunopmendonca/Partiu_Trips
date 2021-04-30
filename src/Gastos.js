@@ -1,9 +1,9 @@
-import React, { useState, Component, useRef } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, Modal, ScrollView, TouchableOpacity, FlatList, TouchableHighlight, SafeAreaView, Alert } from 'react-native';
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
-import ReactNativePickerModule from "react-native-picker-module"
+//import ReactNativePickerModule from "react-native-picker-module"
 // import { json } from 'express';
 
 const Gastos = ({ route }) => {
@@ -27,7 +27,7 @@ const Gastos = ({ route }) => {
     const [BancoDeDados, setBancoDeDados] = useState(dadosApi[0])
 
 
-    console.log(viagemId)
+    console.log(route.params)
 
 
     async function sendForm2() {
@@ -48,7 +48,7 @@ const Gastos = ({ route }) => {
         })
 
         let json = await response.json()
-        console.log(json)
+        // console.log(json)
         setBancoDeDados(json)
     }
 
@@ -62,7 +62,51 @@ const Gastos = ({ route }) => {
             },
             body: JSON.stringify({
                 id: parametro,
-                userId: paramentro2
+                viagemId: paramentro2
+
+            })
+
+        })
+
+        let json = await response.json()
+        console.log(json)
+        setBancoDeDados(json)
+
+    }
+
+    async function adicionarQuantidade(parametro1, paramentro2) {
+
+        let response = await fetch("http://192.168.15.37:3000/adicionarQuantidade", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: parametro1,
+                viagemId: paramentro2
+
+            })
+
+        })
+
+        let json = await response.json()
+        console.log(json)
+        setBancoDeDados(json)
+
+    }
+
+    async function retirarQuantidade(parametro1, paramentro2) {
+
+        let response = await fetch("http://192.168.15.37:3000/retirarQuantidade", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: parametro1,
+                viagemId: paramentro2
 
             })
 
@@ -115,7 +159,6 @@ const Gastos = ({ route }) => {
 
     }
 
-
     const renderItem = ({ item }) => {
 
         // const ide = Data.findIndex(a => {
@@ -143,39 +186,24 @@ const Gastos = ({ route }) => {
 
                     <Button title="+"
                         onPress={() => {
-                            Data.splice(ide, 0)
-                            Data[ide] = {
-                                valori: item.valori,
-                                item: item.item,
-                                valor: item.valor + item.valori,
-                                id: Data.length,
-                                quantidade: item.quantidade + 1
-                            }
+
+                            adicionarQuantidade(item.id, item.viagemId)
 
                             setValorTotal(Data.reduce((total, preco) => total + preco.valor, 0))
 
                         }} />
 
                     <Text style={{ alignSelf: "center", padding: 10, }} >
-                        {item.valori}
+                        {item.valor}
                     </Text>
 
                     <Button title="-"
                         buttonStyle={{ marginRight: 20 }}
                         onPress={() => {
-                            if (item.quantidade >= 2) {
-                                Data.splice(ide, 0)
-                                Data[ide] = {
-                                    valori: item.valori,
-                                    item: item.item,
-                                    valor: item.valor - item.valori,
-                                    id: Data.length,
-                                    quantidade: item.quantidade - 1
-                                }
 
+                            retirarQuantidade(item.id, item.viagemId)
+                            setValorTotal(Data.reduce((total, preco) => total + preco.valor, 0))
 
-                                setValorTotal(Data.reduce((total, preco) => total + preco.valor, 0))
-                            }
 
 
                         }} />
