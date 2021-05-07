@@ -118,11 +118,11 @@ app.post('/enviarGasto', async (req, res) => {
 
     })
 
-    // let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
+    let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
 
-    //     console.log(JSON.stringify(response.Gastos))
-    //     res.send(JSON.stringify(response.Gastos))
-    // })
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos))
+    })
 
 })
 

@@ -53,6 +53,10 @@ const Gastos = ({ route }) => {
 
     }
 
+    if (BancoDeDados.length > 0) {
+        restart()
+    }
+
     async function gastosTotal() {
 
         let response = await fetch("http://192.168.43.223:3000/gastoTotal", {
@@ -70,6 +74,7 @@ const Gastos = ({ route }) => {
         var json = await response.json()
         console.log(json)
         setValorTotal(json)
+
 
 
 
@@ -95,9 +100,11 @@ const Gastos = ({ route }) => {
         })
 
         let json = await response.json()
-        restart()
-        // console.log(json)
-        // setBancoDeDados(json)
+        if (json == true) {
+            restart()
+        }
+
+
 
     }
 
