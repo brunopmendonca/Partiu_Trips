@@ -36,13 +36,20 @@ module.exports = {
 
       valor: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTERGER
       },
       quantidade: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      valorInicial: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      TotalViagems: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       }
-
     });
   },
   down: async (queryInterface, Sequelize) => {

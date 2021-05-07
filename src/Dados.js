@@ -19,7 +19,7 @@ const Dados = ({ route }) => {
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.15.37:3000/lista", {
+    let response = await fetch("http://192.168.43.223:3000/lista", {
       method: 'POST',
       headers: {
         Accept: 'application/json',

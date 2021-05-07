@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, Modal, ScrollView, TouchableOpacity, Fla
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
+//import { Json } from 'sequelize/types/lib/utils';
 //import ReactNativePickerModule from "react-native-picker-module"
 // import { json } from 'express';
 
@@ -29,10 +30,55 @@ const Gastos = ({ route }) => {
 
     console.log(route.params)
 
+    async function restart() {
+
+        let response = await fetch("http://192.168.43.223:3000/restart", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: viagemId
+            })
+
+        })
+
+        var json = await response.json()
+
+        setBancoDeDados(json)
+        // setValorTotal(BancoDeDados.reduce((total, preco) => preco.valor + total, 0))
+        gastosTotal()
+
+
+    }
+
+    async function gastosTotal() {
+
+        let response = await fetch("http://192.168.43.223:3000/gastoTotal", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: viagemId
+            })
+
+        })
+
+        var json = await response.json()
+        console.log(json)
+        setValorTotal(json)
+
+
+
+    }
+
 
     async function sendForm2() {
 
-        let response = await fetch("http://192.168.15.37:3000/enviarGasto", {
+        let response = await fetch("http://192.168.43.223:3000/enviarGasto", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -42,19 +88,22 @@ const Gastos = ({ route }) => {
                 lista: item,
                 viagemId: viagemId,
                 valor: valor,
+                valorInicial: valor,
                 quantidade: quantidade
             })
 
         })
 
         let json = await response.json()
+        restart()
         // console.log(json)
-        setBancoDeDados(json)
+        // setBancoDeDados(json)
+
     }
 
     async function deleteSendForm(parametro, paramentro2) {
 
-        let response = await fetch("http://192.168.15.37:3000/deletarGasto", {
+        let response = await fetch("http://192.168.43.223:3000/deletarGasto", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -62,7 +111,8 @@ const Gastos = ({ route }) => {
             },
             body: JSON.stringify({
                 id: parametro,
-                viagemId: paramentro2
+                viagemId: paramentro2,
+
 
             })
 
@@ -70,13 +120,14 @@ const Gastos = ({ route }) => {
 
         let json = await response.json()
         console.log(json)
-        setBancoDeDados(json)
+        // setBancoDeDados(json)
+        restart()
 
     }
 
-    async function adicionarQuantidade(parametro1, paramentro2) {
+    async function adicionarQuantidade(parametro1, paramentro2, paramentro3) {
 
-        let response = await fetch("http://192.168.15.37:3000/adicionarQuantidade", {
+        let response = await fetch("http://192.168.43.223:3000/adicionarQuantidade", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -84,7 +135,8 @@ const Gastos = ({ route }) => {
             },
             body: JSON.stringify({
                 id: parametro1,
-                viagemId: paramentro2
+                viagemId: paramentro2,
+                valorInicial: paramentro3
 
             })
 
@@ -92,13 +144,16 @@ const Gastos = ({ route }) => {
 
         let json = await response.json()
         console.log(json)
-        setBancoDeDados(json)
+        // setBancoDeDados(json)
+        // setValorTotal(BancoDeDados.reduce((total, preco) => preco.valor + total, 0))
+        restart()
+        // console.log(valorTotal)
 
     }
 
-    async function retirarQuantidade(parametro1, paramentro2) {
+    async function retirarQuantidade(parametro1, paramentro2, paramentro3) {
 
-        let response = await fetch("http://192.168.15.37:3000/retirarQuantidade", {
+        let response = await fetch("http://192.168.43.223:3000/retirarQuantidade", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -106,7 +161,8 @@ const Gastos = ({ route }) => {
             },
             body: JSON.stringify({
                 id: parametro1,
-                viagemId: paramentro2
+                viagemId: paramentro2,
+                valorInicial: paramentro3
 
             })
 
@@ -114,7 +170,11 @@ const Gastos = ({ route }) => {
 
         let json = await response.json()
         console.log(json)
-        setBancoDeDados(json)
+        // setBancoDeDados(json)
+        //  setValorTotal(BancoDeDados.reduce((total, preco) => preco.valor - total, 0))
+        // console.log(valorTotal)
+        restart()
+
 
     }
 
@@ -187,22 +247,22 @@ const Gastos = ({ route }) => {
                     <Button title="+"
                         onPress={() => {
 
-                            adicionarQuantidade(item.id, item.viagemId)
+                            adicionarQuantidade(item.id, item.viagemId, item.valor)
 
-                            setValorTotal(Data.reduce((total, preco) => total + preco.valor, 0))
+                            // setValorTotal(BancoDeDados.reduce((total, preco) => total + preco.valor, 0))
 
                         }} />
 
                     <Text style={{ alignSelf: "center", padding: 10, }} >
-                        {item.valor}
+                        {item.valorInicial}
                     </Text>
 
                     <Button title="-"
                         buttonStyle={{ marginRight: 20 }}
                         onPress={() => {
 
-                            retirarQuantidade(item.id, item.viagemId)
-                            setValorTotal(Data.reduce((total, preco) => total + preco.valor, 0))
+                            retirarQuantidade(item.id, item.viagemId, item.valor)
+                            setValorTotal(BancoDeDados.reduce((total, preco) => total + preco.valor, 0))
 
 
 
@@ -225,7 +285,7 @@ const Gastos = ({ route }) => {
 
             <View style={style.header} >
                 <Image source={require("../icons/simbolo.png")} />
-                <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem</Text>
+                <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem {valorTotal}</Text>
                 <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
             </View>
 
@@ -406,7 +466,7 @@ const Gastos = ({ route }) => {
                 <Card style={style.card}>
                     <Card.Content>
                         <Title style={style.title} >Valor em: {moedaSelecionada}</Title>
-                        <Paragraph>  {valorTotal} </Paragraph>
+                        <Paragraph> {valorTotal} </Paragraph>
                         <View style={style.lista} >
                             <FlatList
                                 data={BancoDeDados}

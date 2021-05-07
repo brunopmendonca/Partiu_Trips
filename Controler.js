@@ -86,6 +86,24 @@ app.post('/gasto', async (req, res) => {
 
 })
 
+app.post('/gastoTotal', async (req, res) => {
+
+    let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos.reduce((total, preco) => preco.valor + total, 0)))
+    })
+
+})
+
+app.post('/restart', async (req, res) => {
+
+    let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response.Gastos))
+        res.send(JSON.stringify(response.Gastos))
+    })
+
+})
+
 app.post('/enviarGasto', async (req, res) => {
 
     console.log(req.body)
@@ -96,13 +114,15 @@ app.post('/enviarGasto', async (req, res) => {
         viagemId: req.body.viagemId,
         valor: req.body.valor,
         quantidade: req.body.quantidade,
+        valorInicial: req.body.valorInicial,
 
     })
 
-    let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
-        console.log(JSON.stringify(response.Gastos))
-        res.send(JSON.stringify(response.Gastos))
-    })
+    // let update = await viagem.findByPk(req.body.viagemId, { include: [{ all: true }] }).then((response) => {
+
+    //     console.log(JSON.stringify(response.Gastos))
+    //     res.send(JSON.stringify(response.Gastos))
+    // })
 
 })
 
@@ -128,6 +148,7 @@ app.post('/adicionarQuantidade', async (req, res) => {
             return a.id == req.body.id
         })
         response[indexId].quantidade = response[indexId].quantidade + 1
+        response[indexId].valor = response[indexId].valorInicial * response[indexId].quantidade
         response[indexId].save()
         res.send(JSON.stringify(response))
 
@@ -145,12 +166,18 @@ app.post('/retirarQuantidade', async (req, res) => {
         let indexId = response.findIndex(a => {
             return a.id == req.body.id
         })
-        response[indexId].quantidade = response[indexId].quantidade - 1
-        response[indexId].save()
-        res.send(JSON.stringify(response))
 
+        if (response[indexId].quantidade > 1 || [indexId].quantidade == 1) {
+
+            response[indexId].quantidade = response[indexId].quantidade - 1
+            response[indexId].valor = response[indexId].valorInicial * response[indexId].quantidade
+            response[indexId].save()
+            res.send(JSON.stringify(response))
+
+        }
 
     })
+
 
 
 })
