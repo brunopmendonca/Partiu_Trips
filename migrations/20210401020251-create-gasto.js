@@ -28,6 +28,27 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      gastos: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+
+      valor: {
+        allowNull: false,
+        type: Sequelize.INTERGER
+      },
+      quantidade: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      valorInicial: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      TotalViagems: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       }
     });
   },

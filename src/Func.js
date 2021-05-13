@@ -8,11 +8,13 @@ import * as Location from 'expo-location';
 
 const Func = ({ navigation, route }) => {
 
+  console.log(route.params)
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const [ida, setIda] = useState(route.params.ida)
   const [volta, setVolta] = useState(route.params.volta)
   const [imagem, setImagem] = useState(route.params.imagem)
+  const [lugar, setIlugar] = useState(route.params.lugar)
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [latitude, setLatitude] = useState();
@@ -51,8 +53,29 @@ const Func = ({ navigation, route }) => {
   }, []);
 
 
-  const navGastos = () => {
-    navigation.navigate("Gastos")
+
+
+
+  const navGastos = async () => {
+
+    let response = await fetch("http://192.168.15.37:3000/gasto", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: route.params.id,
+      })
+
+    })
+
+    var json = await response.json()
+    console.log(json.length)
+    navigation.navigate("Gastos", [json, route.params.id])
+
+
+
 
   }
 
@@ -74,7 +97,7 @@ const Func = ({ navigation, route }) => {
       <Card style={style.card}>
         <Card.Cover style={style.imagem} source={imagem} />
         <Card.Content>
-          <Title>Card title</Title>
+          <Title>{lugar}</Title>
           <View style={style.datas}>
             <Paragraph>{ida}</Paragraph>
             <Paragraph> até </Paragraph>
@@ -96,7 +119,7 @@ const Func = ({ navigation, route }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> QR code </Text>
         </TouchableOpacity>
 
       </View>
@@ -104,15 +127,15 @@ const Func = ({ navigation, route }) => {
       <View style={style.grupo}>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Camera </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Lista </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Mapa </Text>
         </TouchableOpacity>
 
       </View>

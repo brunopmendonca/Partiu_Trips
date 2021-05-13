@@ -9,22 +9,51 @@ const dados = require('../icons/praia.png')
 
 const Bemvindo = ({ route, navigation }) => {
 
-  const [pic, setImagem] = useState(route.params)
-  const [dados, setDados] = useState([])
-  dados.push(pic)
+
+
+  const [bancoDeDados, setImagem] = useState(route.params)
+  const [dados, setDados] = useState(bancoDeDados[0])
+  //dados.push(bancoDeDados)
   const carosselRef = useRef()
   console.log(dados)
 
+  function navegarDados() {
+    navigation.navigate("Dados", { id: bancoDeDados[1] })
+  }
+
+
   const renderItem = ({ item, index }) => {
+
+    if (item.imagem == "praia") {
+      item.imagem = require('../icons/praia.png')
+    }
+
+
+    if (item.imagem == "montanha") {
+      item.imagem = require('../icons/montanha.png')
+    }
+
+
+    if (item.imagem == "inverno") {
+      item.imagem = require('../icons/inverno.png')
+    }
+
+
+    if (item.imagem == "cidade") {
+      item.imagem = require('../icons/cidade.png')
+    }
+
+
+
 
     return (
       <View>
         <Card style={style.card}>
-          <TouchableOpacity style={style.imagem} onPress={() => navigation.navigate("Func", { ida: item.ida, volta: item.volta, imagem: item.imagem })}>
+          <TouchableOpacity style={style.imagem} onPress={() => navigation.navigate("Func", { ida: item.ida, volta: item.volta, imagem: item.imagem, lugar: item.lugar, id: item.id, userId: item.userId })}>
             <Image style={{ height: 200, width: 250 }} source={item.imagem} />
           </TouchableOpacity>
           <Card.Content>
-            <Title>Card title</Title>
+            <Title>{item.lugar}</Title>
             <View style={style.datas}>
               <Paragraph>{item.ida}</Paragraph>
               <Paragraph> até </Paragraph>
@@ -46,10 +75,8 @@ const Bemvindo = ({ route, navigation }) => {
 
 
       <View style={style.titulo}>
-        <Text style={{ fontSize: 28, color: "#1E7987" }}>Bem-Vindo (a) !!</Text>
+        <Text style={{ fontSize: 28, color: "#1E7987" }}>Suas Viagems</Text>
       </View>
-
-
       <View style={{ justifyContent: "center", alignItems: "center" }} >
         <Carousel
 
@@ -63,14 +90,13 @@ const Bemvindo = ({ route, navigation }) => {
         />
       </View>
 
-
       <View style={style.botao}>
 
         <Button
           buttonStyle={style.novaViagem}
           title="Nova Viagem"
           titleStyle={{ fontSize: 23 }}
-          onPress={() => navigation.navigate('Dados')}
+          onPress={navegarDados}
         />
 
       </View>

@@ -16,7 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   };
   Gasto.init({
     lista: DataTypes.STRING,
-    viagemId: DataTypes.INTEGER
+    viagemId: DataTypes.INTEGER,
+    valor: DataTypes.INTEGER,
+    quantidade: DataTypes.STRING,
+    valorInicial: DataTypes.INTEGER,
+    TotalViagem: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Gasto',

@@ -9,8 +9,30 @@ import Carousel from 'react-native-snap-carousel';
 const PrimeiraTela = ({ route, navigation }) => {
 
     const [dados, setDados] = useState(route.params.nome)
+    const [dados2, setDados2] = useState(route.params.id)
 
     console.log(dados)
+
+    async function sendForm() {
+
+        let response = await fetch("http://192.168.15.37:3000/viagens", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: route.params.nome,
+                id: route.params.id,
+
+            })
+
+        })
+
+        let json = await response.json()
+        console.log(json)
+        navigation.navigate("Bemvindo", [json, route.params.id])
+    }
 
     return (
 
@@ -32,12 +54,12 @@ const PrimeiraTela = ({ route, navigation }) => {
             <Button
                 buttonStyle={style.botao}
                 title="Nova Viagem"
-                onPress={() => { navigation.navigate("Dados") }}
+                onPress={() => { navigation.navigate("Dados", { id: dados2 }) }}
             />
             <Button
                 buttonStyle={style.botao}
                 title="Minhas Viagens"
-                onPress={() => { navigation.navigate("Bemvindo") }}
+                onPress={sendForm}
             />
 
 
