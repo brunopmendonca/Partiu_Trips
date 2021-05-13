@@ -9,11 +9,17 @@ const dados = require('../icons/praia.png')
 
 const Bemvindo = ({ route, navigation }) => {
 
-  const [pic, setImagem] = useState(route.params)
-  const [dados, setDados] = useState([])
-  dados.push(pic)
+
+
+  const [bancoDeDados, setImagem] = useState(route.params)
+  const [dados, setDados] = useState(bancoDeDados[0])
+  //dados.push(bancoDeDados)
   const carosselRef = useRef()
-  console.log(dados[0])
+  console.log(dados)
+
+  function navegarDados() {
+    navigation.navigate("Dados", { id: bancoDeDados[1] })
+  }
 
 
   const renderItem = ({ item, index }) => {
@@ -36,6 +42,8 @@ const Bemvindo = ({ route, navigation }) => {
     if (item.imagem == "cidade") {
       item.imagem = require('../icons/cidade.png')
     }
+
+
 
 
     return (
@@ -73,7 +81,7 @@ const Bemvindo = ({ route, navigation }) => {
         <Carousel
 
           ref={carosselRef}
-          data={dados[0]}
+          data={dados}
           renderItem={renderItem}
           sliderWidth={500}
           itemWidth={300}
@@ -88,7 +96,7 @@ const Bemvindo = ({ route, navigation }) => {
           buttonStyle={style.novaViagem}
           title="Nova Viagem"
           titleStyle={{ fontSize: 23 }}
-          onPress={() => navigation.navigate('Dados')}
+          onPress={navegarDados}
         />
 
       </View>

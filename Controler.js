@@ -74,7 +74,13 @@ app.post('/lista', async (req, res) => {
 
     })
 
-    console.log(create)
+    let update = await user.findByPk(req.body.user, { include: [{ all: true }] }).then((response) => {
+        console.log(JSON.stringify(response))
+        res.send(JSON.stringify(response))
+    })
+
+
+
 })
 
 app.post('/gasto', async (req, res) => {

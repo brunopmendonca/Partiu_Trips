@@ -58,7 +58,7 @@ const Func = ({ navigation, route }) => {
 
   const navGastos = async () => {
 
-    let response = await fetch("http://192.168.43.223:3000/gasto", {
+    let response = await fetch("http://192.168.15.37:3000/gasto", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -119,7 +119,7 @@ const Func = ({ navigation, route }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> QR code </Text>
         </TouchableOpacity>
 
       </View>
@@ -127,15 +127,15 @@ const Func = ({ navigation, route }) => {
       <View style={style.grupo}>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Camera </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Lista </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} >
-          <Text style={style.textoOpcao}> Gastos </Text>
+          <Text style={style.textoOpcao}> Mapa </Text>
         </TouchableOpacity>
 
       </View>

@@ -25,7 +25,7 @@ const Cadastro = ({ navigation }) => {
 
   async function sendForm() {
     if (confPassword == password) {
-      let response = await fetch("http:/192.168.43.223:3000/cadastro", {
+      let response = await fetch("http://192.168.15.37:3000/cadastro", {
         method: 'POST',
         headers: {
           Accept: 'application/json',

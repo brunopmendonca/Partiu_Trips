@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import firebase from '../Firebaseconection';
 import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
+import style from './Styles/StyleLogin'
+
 
 
 const Login = ({ navigation }) => {
-
 
   const fontsLoaded = useFonts({
     Amarante_400Regular,
@@ -24,7 +24,7 @@ const Login = ({ navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.43.223:3000/login", {
+    let response = await fetch("http://192.168.15.37:3000/login", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -49,23 +49,6 @@ const Login = ({ navigation }) => {
     )
 
   }
-
-
-
-  // const login = () => {
-  //   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-  //     navegacao()
-  //   }).catch(() => {
-  //     window.alert("login nao funcionou")
-  //   })
-  // }
-
-  // const navegacao = () => {
-  //   navigation.navigate("Bemvindo")
-
-  // }
-
-
 
 
   return (
@@ -129,68 +112,68 @@ const Login = ({ navigation }) => {
 };
 
 
-const style = StyleSheet.create({
+// const style = StyleSheet.create({
 
-  simbolo: {
-    height: "20%",
-    alignItems: "baseline",
-    justifyContent: "center",
-    alignItems: "baseline",
-    paddingLeft: 25,
+//   simbolo: {
+//     height: "20%",
+//     alignItems: "baseline",
+//     justifyContent: "center",
+//     alignItems: "baseline",
+//     paddingLeft: 25,
 
-  },
+//   },
 
-  header: {
-    backgroundColor: "#FBF8F8",
-    height: "30%"
+//   header: {
+//     backgroundColor: "#FBF8F8",
+//     height: "30%"
 
-  },
+//   },
 
-  titulo1: {
-    fontSize: 55,
-    color: "#EB6458",
-    // fontFamily: { fontsLoaded }
-  },
+//   titulo1: {
+//     fontSize: 55,
+//     color: "#EB6458",
+//     // fontFamily: { fontsLoaded }
+//   },
 
-  titulo2: {
-    fontSize: 50,
-    color: "#1E7987",
-    fontFamily: 'Amarante_400Regular'
-  },
+//   titulo2: {
+//     fontSize: 50,
+//     color: "#1E7987",
+//     fontFamily: 'Amarante_400Regular'
+//   },
 
-  loginIn: {
-    marginLeft: 24
-  },
+//   loginIn: {
+//     marginLeft: 24
+//   },
 
-  input: {
-    //  backgroundColor:"#fff", 
-    width: "80%",
-    alignSelf: "center",
-    borderBottomWidth: 1,
-    borderColor: "#fff",
-    fontSize: 20,
-    marginTop: 50
-  },
+//   input: {
+//     //  backgroundColor:"#fff", 
+//     width: "80%",
+//     alignSelf: "center",
+//     borderBottomWidth: 1,
+//     borderColor: "#fff",
+//     fontSize: 20,
+//     marginTop: 50
+//   },
 
-  botao: {
-    alignSelf: "center",
-    justifyContent: "center",
-    backgroundColor: "#EB6458",
-    width: "80%",
-    height: "80%",
-    borderRadius: 40,
-  },
+//   botao: {
+//     alignSelf: "center",
+//     justifyContent: "center",
+//     backgroundColor: "#EB6458",
+//     width: "80%",
+//     height: "80%",
+//     borderRadius: 40,
+//   },
 
-  login: {
-    backgroundColor: "#1E7987",
-    borderTopLeftRadius: 45,
-    borderTopRightRadius: 45,
-    paddingTop: 10,
-    paddingBottom: 50,
-    height: 700
-  }
+//   login: {
+//     backgroundColor: "#1E7987",
+//     borderTopLeftRadius: 45,
+//     borderTopRightRadius: 45,
+//     paddingTop: 10,
+//     paddingBottom: 50,
+//     height: 700
+//   }
 
-})
+// })
 
 
 

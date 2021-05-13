@@ -15,7 +15,7 @@ const PrimeiraTela = ({ route, navigation }) => {
 
     async function sendForm() {
 
-        let response = await fetch("http://192.168.43.223:3000/viagens", {
+        let response = await fetch("http://192.168.15.37:3000/viagens", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -31,7 +31,7 @@ const PrimeiraTela = ({ route, navigation }) => {
 
         let json = await response.json()
         console.log(json)
-        navigation.navigate("Bemvindo", json)
+        navigation.navigate("Bemvindo", [json, route.params.id])
     }
 
     return (

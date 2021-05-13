@@ -6,7 +6,7 @@ import DatePicker from "react-native-datepicker"
 import { useNavigation } from "@react-navigation/native"
 
 
-const Dados = ({ route }) => {
+const Dados = ({ route, navigation }) => {
 
 
 
@@ -14,12 +14,28 @@ const Dados = ({ route }) => {
   const [volta, setVolta] = useState('')
   const [imagem, setImagem] = useState('')
   const [user, setuser] = useState(route.params.id)
-  const [lugar, setLugar] = useState()
+  const [lugar, setLugar] = useState('')
+  console.log(user)
+
+
+
+  const Handbotton = async () => {
+
+    if (volta.length > 0 && ida.length > 0 && lugar.length > 0 && imagem.length > 0) {
+
+      sendForm()
+
+    }
+    else (
+      window.alert("Preencha todos os campos")
+    )
+
+  }
 
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.43.223:3000/lista", {
+    let response = await fetch("http://192.168.15.37:3000/lista", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -39,6 +55,8 @@ const Dados = ({ route }) => {
 
     let json = await response.json()
     console.log(json)
+    navigation.navigate("PrimeiraTela")
+
 
   }
 
@@ -72,7 +90,7 @@ const Dados = ({ route }) => {
               <TouchableHighlight onPress={() => { setImagem('praia') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/praia.png")} />
               </TouchableHighlight>
-              <TouchableHighlight onPress={() => { setImagem("inverso") }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
+              <TouchableHighlight onPress={() => { setImagem("inverno") }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
                 <Image source={require("../icons/inverno.png")} />
               </TouchableHighlight>
             </View>
@@ -95,7 +113,7 @@ const Dados = ({ route }) => {
             <Button
               buttonStyle={style.botao}
               titleStyle={{ fontSize: 23 }}
-              onPress={sendForm}
+              onPress={Handbotton}
               title={"Criar Viagem"}
             />
           </View>
