@@ -2,9 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, FlatList, DatePickerAndroid } from 'react-native';
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Avatar, Card, Title, Paragraph, List } from 'react-native-paper'
-import Carousel from 'react-native-snap-carousel';
-import { set } from 'react-native-reanimated';
-
+import style from "./Styles/StyleArquivo"
 
 const Arquivos = ({ route, navigation }) => {
 
@@ -49,13 +47,7 @@ const Arquivos = ({ route, navigation }) => {
 
     }
 
-
-    // useEffect(() => {
-    //     
-    // }, [Data])
-
     console.log(Data)
-
 
     const renderItem = ({ item }) => {
 
@@ -128,52 +120,52 @@ const Arquivos = ({ route, navigation }) => {
 };
 
 
-const style = StyleSheet.create({
+// const style = StyleSheet.create({
 
-    container: {
-        flex: 1
-    },
+//     container: {
+//         flex: 1
+//     },
 
-    header: {
-        flexDirection: "row",
-        alignItems: "baseline",
-        justifyContent: "space-around",
-        marginTop: 20
+//     header: {
+//         flexDirection: "row",
+//         alignItems: "baseline",
+//         justifyContent: "space-around",
+//         marginTop: 20
 
-    },
+//     },
 
-    title: {
-        backgroundColor: "#E1F6BE",
-        justifyContent: "center",
-        color: "#55BC4C"
-    },
+//     title: {
+//         backgroundColor: "#E1F6BE",
+//         justifyContent: "center",
+//         color: "#55BC4C"
+//     },
 
-    card: {
+//     card: {
 
-        backgroundColor: "#E1F6BE",
-        marginTop: 20,
-        justifyContent: "center",
-        padding: 5
+//         backgroundColor: "#E1F6BE",
+//         marginTop: 20,
+//         justifyContent: "center",
+//         padding: 5
 
-    },
+//     },
 
-    entradas: {
-        marginTop: 20
-    },
+//     entradas: {
+//         marginTop: 20
+//     },
 
-    lista: {
-        backgroundColor: "#fff"
-    },
+//     lista: {
+//         backgroundColor: "#fff"
+//     },
 
-    resultados: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: 6
-    }
+//     resultados: {
+//         flexDirection: "row",
+//         justifyContent: "space-between",
+//         padding: 6
+//     }
 
 
 
-})
+// })
 
 
 
