@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-nati
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
-import style from './Styles/StyleLogin'
+import style from '../Styles/StyleLogin'
 
 
 
@@ -58,7 +58,7 @@ const Login = ({ navigation }) => {
       <View style={style.header} >
 
         <View style={style.simbolo}>
-          <Image source={require("../icons/simbolo.png")} />
+          <Image source={require("../../icons/simbolo.png")} />
         </View>
 
         <View style={{ alignItems: "center" }}>
@@ -95,7 +95,7 @@ const Login = ({ navigation }) => {
         </View>
 
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50, marginBottom: 20, marginTop: 20 }} source={require("../icons/image_5.png")} />
+          <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50, marginBottom: 20, marginTop: 20 }} source={require("../../icons/image_5.png")} />
         </View>
 
         <View style={{ flexDirection: "row", alignSelf: "center", flex: 1, justifyContent: "flex-end", marginBottom: 100 }}>

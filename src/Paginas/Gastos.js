@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image, Modal, ScrollView, TouchableOpacity, Fla
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Card, Title, Paragraph, List } from 'react-native-paper'
 import axios from 'axios';
-import style from './Styles/StyleGastos'
+import style from '../Styles/StyleGastos'
 
 const Gastos = ({ route }) => {
 
@@ -282,7 +282,7 @@ const Gastos = ({ route }) => {
 
 
             <View style={style.header} >
-                <Image source={require("../icons/simbolo.png")} />
+                <Image source={require("../../icons/simbolo.png")} />
                 <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem</Text>
                 <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
             </View>

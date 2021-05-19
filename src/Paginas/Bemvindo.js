@@ -3,11 +3,11 @@ import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity 
 import { Button } from 'react-native-elements'
 import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper'
 import Carousel from 'react-native-snap-carousel';
-import style from './Styles/StyleBemvindo'
+import style from '../Styles/StyleBemvindo'
 
 
 
-const dados = require('../icons/praia.png')
+const dados = require('../../icons/praia.png')
 
 const Bemvindo = ({ route, navigation }) => {
 
@@ -26,22 +26,22 @@ const Bemvindo = ({ route, navigation }) => {
   const renderItem = ({ item, index }) => {
 
     if (item.imagem == "praia") {
-      item.imagem = require('../icons/praia.png')
+      item.imagem = require('../../icons/praia.png')
     }
 
 
     if (item.imagem == "montanha") {
-      item.imagem = require('../icons/montanha.png')
+      item.imagem = require('../../icons/montanha.png')
     }
 
 
     if (item.imagem == "inverno") {
-      item.imagem = require('../icons/inverno.png')
+      item.imagem = require('../../icons/inverno.png')
     }
 
 
     if (item.imagem == "cidade") {
-      item.imagem = require('../icons/cidade.png')
+      item.imagem = require('../../icons/cidade.png')
     }
 
 
@@ -71,7 +71,7 @@ const Bemvindo = ({ route, navigation }) => {
     <View style={style.container1}>
 
       <View style={style.simbolo}>
-        <Image source={require('../icons/simbolo.png')} />
+        <Image source={require('../../icons/simbolo.png')} />
       </View>
 
 

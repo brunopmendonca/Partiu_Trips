@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
-import style from "./Styles/StyleFunc"
+import style from "../Styles/StyleFunc"
 
 const Func = ({ navigation, route }) => {
 
@@ -90,7 +90,7 @@ const Func = ({ navigation, route }) => {
     <ScrollView>
 
       <View style={style.header} >
-        <Image source={require("../icons/simbolo.png")} />
+        <Image source={require("../../icons/simbolo.png")} />
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem</Text>
         <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
       </View>
@@ -110,12 +110,12 @@ const Func = ({ navigation, route }) => {
       <View style={style.grupo}>
 
         <TouchableOpacity style={style.opcao} onPress={navGastos} >
-          <Image style={style.iconi} source={require("../icons/image_8.png")} />
+          <Image style={style.iconi} source={require("../../icons/image_8.png")} />
           <Text style={style.textoOpcao}> Gastos </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.opcao} onPress={navArquivos} >
-          <Image style={style.iconi} source={require("../icons/image_9.png")} />
+          <Image style={style.iconi} source={require("../../icons/image_9.png")} />
           <Text style={style.textoOpcao}> Arquivos </Text>
         </TouchableOpacity>
 

@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import DatePicker from "react-native-datepicker"
 import { useNavigation } from "@react-navigation/native"
-import style from "./Styles/StyleDados"
+import style from "../Styles/StyleDados"
 
 
 const Dados = ({ route, navigation }) => {
@@ -67,7 +67,7 @@ const Dados = ({ route, navigation }) => {
 
       <View style={style.header} >
 
-        <Image source={require("../icons/simbolo.png")} />
+        <Image source={require("../../icons/simbolo.png")} />
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Dados da Viagem</Text>
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}></Text>
 
@@ -87,21 +87,21 @@ const Dados = ({ route, navigation }) => {
 
             <View style={{ flexDirection: "column" }}>
               <TouchableHighlight onPress={() => { setImagem('praia') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/praia.png")} />
+                <Image source={require("../../icons/praia.png")} />
               </TouchableHighlight>
               <TouchableHighlight onPress={() => { setImagem("inverno") }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/inverno.png")} />
+                <Image source={require("../../icons/inverno.png")} />
               </TouchableHighlight>
             </View>
 
             <View style={{ flexDirection: "column" }}>
 
               <TouchableHighlight onPress={() => { setImagem('montanha') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/montanha.png")} />
+                <Image source={require("../../icons/montanha.png")} />
               </TouchableHighlight>
 
               <TouchableHighlight onPress={() => { setImagem('cidade') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/cidade.png")} />
+                <Image source={require("../../icons/cidade.png")} />
               </TouchableHighlight>
 
             </View>

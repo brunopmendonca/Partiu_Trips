@@ -39,7 +39,7 @@ const PrimeiraTela = ({ route, navigation }) => {
         <View style={style.container1}>
 
             <View style={style.simbolo}>
-                <Image source={require('../icons/simbolo.png')} />
+                <Image source={require('../../icons/simbolo.png')} />
             </View>
 
 

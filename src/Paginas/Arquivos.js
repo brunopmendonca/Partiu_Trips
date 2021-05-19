@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, FlatList, DatePickerAndroid } from 'react-native';
 import { Button, Input } from 'react-native-elements'
 import { Appbar, Avatar, Card, Title, Paragraph, List } from 'react-native-paper'
-import style from "./Styles/StyleArquivo"
+import style from "../Styles/StyleArquivo"
 
 const Arquivos = ({ route, navigation }) => {
 
@@ -86,7 +86,7 @@ const Arquivos = ({ route, navigation }) => {
 
 
             <View style={style.header} >
-                <Image source={require("../icons/simbolo.png")} />
+                <Image source={require("../../icons/simbolo.png")} />
                 <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem</Text>
                 <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
             </View>

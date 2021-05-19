@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import style from "./Styles/StyleCadastro"
+import style from "../Styles/StyleCadastro"
 
 
 const Cadastro = ({ navigation }) => {
@@ -111,7 +111,7 @@ const Cadastro = ({ navigation }) => {
           </View>
 
           <View style={{ height: "20%", alignItems: "center", justifyContent: "center" }}>
-            <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50 }} source={require("../icons/image_5.png")} />
+            <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50 }} source={require("../../icons/image_5.png")} />
           </View>
 
           <View style={{ flexDirection: "row", alignSelf: "center", height: 30, justifyContent: "flex-end" }}>
