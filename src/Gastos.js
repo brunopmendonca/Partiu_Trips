@@ -50,10 +50,6 @@ const Gastos = ({ route }) => {
 
     }
 
-    // if (BancoDeDados[0].length >= 1) {
-    //     restart()
-    // }
-
     async function gastosTotal() {
 
         let response = await fetch("http://192.168.43.223:3000/gastoTotal", {
