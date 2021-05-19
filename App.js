@@ -4,14 +4,14 @@ import { SafeAreaView, SafeAreaViewComponent } from 'react-native';
 import React from 'react';
 
 
-import Login from './src/Login';
-import Cadastro from './src/Cadastro';
-import Bemvindo from './src/Bemvindo';
-import Dados from './src/Dados';
-import Func from "./src/Func"
-import Gastos from "./src/Gastos"
-import Arquivos from "./src/Arquivos"
-import PrimeiraTela from "./src/PrimeiraTela"
+import Login from './src/Paginas/Login';
+import Cadastro from './src/Paginas/Cadastro';
+import Bemvindo from './src/Paginas/Bemvindo';
+import Dados from './src/Paginas/Dados';
+import Func from "./src/Paginas/Func"
+import Gastos from "./src/Paginas/Gastos"
+import Arquivos from "./src/Paginas/Arquivos"
+import PrimeiraTela from "./src/Paginas/PrimeiraTela"
 
 const Stack = createStackNavigator()
 

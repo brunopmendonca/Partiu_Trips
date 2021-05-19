@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import firebase from '../Firebaseconection'
-//import { response } from 'express';
+import style from "../Styles/StyleCadastro"
 
 
 const Cadastro = ({ navigation }) => {
@@ -25,7 +24,7 @@ const Cadastro = ({ navigation }) => {
 
   async function sendForm() {
     if (confPassword == password) {
-      let response = await fetch("http://192.168.15.37:3000/cadastro", {
+      let response = await fetch("http://192.168.43.223:3000/cadastro", {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -112,7 +111,7 @@ const Cadastro = ({ navigation }) => {
           </View>
 
           <View style={{ height: "20%", alignItems: "center", justifyContent: "center" }}>
-            <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50 }} source={require("../icons/image_5.png")} />
+            <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50 }} source={require("../../icons/image_5.png")} />
           </View>
 
           <View style={{ flexDirection: "row", alignSelf: "center", height: 30, justifyContent: "flex-end" }}>
@@ -132,69 +131,69 @@ const Cadastro = ({ navigation }) => {
   )
 };
 
-const style = StyleSheet.create({
+// const style = StyleSheet.create({
 
-  container1: {
-    flexDirection: "column",
-  },
+//   container1: {
+//     flexDirection: "column",
+//   },
 
-  header: {
-    backgroundColor: "#FBF8F8",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 226
+//   header: {
+//     backgroundColor: "#FBF8F8",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     height: 226
 
-  },
+//   },
 
-  titulo1: {
-    fontSize: 55,
-    color: "#EB6458"
-  },
+//   titulo1: {
+//     fontSize: 55,
+//     color: "#EB6458"
+//   },
 
-  titulo2: {
+//   titulo2: {
 
-    fontSize: 50,
-    color: "#1E7987"
+//     fontSize: 50,
+//     color: "#1E7987"
 
-  },
+//   },
 
-  loginIn: {
+//   loginIn: {
 
-    marginLeft: 24
+//     marginLeft: 24
 
-  },
+//   },
 
-  input: {
-    //  backgroundColor:"#fff", 
-    width: "80%",
-    height: "20%",
-    alignSelf: "center",
-    borderBottomWidth: 1,
-    borderColor: "#fff",
-    fontSize: 20,
+//   input: {
+//     //  backgroundColor:"#fff", 
+//     width: "80%",
+//     height: "20%",
+//     alignSelf: "center",
+//     borderBottomWidth: 1,
+//     borderColor: "#fff",
+//     fontSize: 20,
 
-  },
+//   },
 
-  botao: {
+//   botao: {
 
-    alignSelf: "center",
-    justifyContent: "center",
-    backgroundColor: "#EB6458",
-    width: "80%",
-    height: "80%",
-    borderRadius: 40,
+//     alignSelf: "center",
+//     justifyContent: "center",
+//     backgroundColor: "#EB6458",
+//     width: "80%",
+//     height: "80%",
+//     borderRadius: 40,
 
-  },
+//   },
 
-  login: {
-    backgroundColor: "#1E7987",
-    borderTopLeftRadius: 45,
-    borderTopRightRadius: 45,
-    height: 784
+//   login: {
+//     backgroundColor: "#1E7987",
+//     borderTopLeftRadius: 45,
+//     borderTopRightRadius: 45,
+//     height: 784
 
-  }
+//   }
 
-})
+// })
 
 
 export default Cadastro

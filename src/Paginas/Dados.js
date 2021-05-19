@@ -4,11 +4,10 @@ import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import DatePicker from "react-native-datepicker"
 import { useNavigation } from "@react-navigation/native"
+import style from "../Styles/StyleDados"
 
 
 const Dados = ({ route, navigation }) => {
-
-
 
   const [ida, setIda] = useState('')
   const [volta, setVolta] = useState('')
@@ -35,7 +34,7 @@ const Dados = ({ route, navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.15.37:3000/lista", {
+    let response = await fetch("http://192.168.43.223:3000/lista", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -68,7 +67,7 @@ const Dados = ({ route, navigation }) => {
 
       <View style={style.header} >
 
-        <Image source={require("../icons/simbolo.png")} />
+        <Image source={require("../../icons/simbolo.png")} />
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Dados da Viagem</Text>
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}></Text>
 
@@ -88,21 +87,21 @@ const Dados = ({ route, navigation }) => {
 
             <View style={{ flexDirection: "column" }}>
               <TouchableHighlight onPress={() => { setImagem('praia') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/praia.png")} />
+                <Image source={require("../../icons/praia.png")} />
               </TouchableHighlight>
               <TouchableHighlight onPress={() => { setImagem("inverno") }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/inverno.png")} />
+                <Image source={require("../../icons/inverno.png")} />
               </TouchableHighlight>
             </View>
 
             <View style={{ flexDirection: "column" }}>
 
               <TouchableHighlight onPress={() => { setImagem('montanha') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/montanha.png")} />
+                <Image source={require("../../icons/montanha.png")} />
               </TouchableHighlight>
 
               <TouchableHighlight onPress={() => { setImagem('cidade') }} style={{ margin: 10, borderRadius: 20 }} underlayColor="#1E7987">
-                <Image source={require("../icons/cidade.png")} />
+                <Image source={require("../../icons/cidade.png")} />
               </TouchableHighlight>
 
             </View>
@@ -127,59 +126,59 @@ const Dados = ({ route, navigation }) => {
   )
 };
 
-const style = StyleSheet.create({
+// const style = StyleSheet.create({
 
-  container1: {
-    flexDirection: "column",
-    height: "100%"
-  },
+//   container1: {
+//     flexDirection: "column",
+//     height: "100%"
+//   },
 
-  header: {
-    flexDirection: "row",
-    backgroundColor: "#FBF8F8",
-    height: "15%",
-    alignItems: "baseline",
-    justifyContent: "space-around",
-    paddingTop: 30
+//   header: {
+//     flexDirection: "row",
+//     backgroundColor: "#FBF8F8",
+//     height: "15%",
+//     alignItems: "baseline",
+//     justifyContent: "space-around",
+//     paddingTop: 30
 
-  },
+//   },
 
-  simbolo: {
-    alignItems: "baseline",
-    justifyContent: "center",
-    alignItems: "baseline",
+//   simbolo: {
+//     alignItems: "baseline",
+//     justifyContent: "center",
+//     alignItems: "baseline",
 
-  },
+//   },
 
-  input: {
-    //  backgroundColor:"#fff", 
-    width: "80%",
-    height: "20%",
-    alignSelf: "center",
-    justifyContent: "center",
-    marginBottom: 30
+//   input: {
+//     //  backgroundColor:"#fff", 
+//     width: "80%",
+//     height: "20%",
+//     alignSelf: "center",
+//     justifyContent: "center",
+//     marginBottom: 30
 
-  },
+//   },
 
-  botao: {
-    alignSelf: "center",
-    justifyContent: "center",
-    backgroundColor: "#EB6458",
-    width: "80%",
-    height: "55%",
-    borderRadius: 40,
+//   botao: {
+//     alignSelf: "center",
+//     justifyContent: "center",
+//     backgroundColor: "#EB6458",
+//     width: "80%",
+//     height: "55%",
+//     borderRadius: 40,
 
-  },
+//   },
 
-  login: {
-    backgroundColor: "#1E7987",
-    borderTopLeftRadius: 45,
-    borderTopRightRadius: 45,
-    height: 784
+//   login: {
+//     backgroundColor: "#1E7987",
+//     borderTopLeftRadius: 45,
+//     borderTopRightRadius: 45,
+//     height: 784
 
-  }
+//   }
 
-})
+// })
 
 
 export default Dados

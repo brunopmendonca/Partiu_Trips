@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-nati
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
-import style from './Styles/StyleLogin'
+import style from '../Styles/StyleLogin'
 
 
 
@@ -24,7 +24,7 @@ const Login = ({ navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.15.37:3000/login", {
+    let response = await fetch("http://192.168.43.223:3000/login", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -58,7 +58,7 @@ const Login = ({ navigation }) => {
       <View style={style.header} >
 
         <View style={style.simbolo}>
-          <Image source={require("../icons/simbolo.png")} />
+          <Image source={require("../../icons/simbolo.png")} />
         </View>
 
         <View style={{ alignItems: "center" }}>
@@ -95,7 +95,7 @@ const Login = ({ navigation }) => {
         </View>
 
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50, marginBottom: 20, marginTop: 20 }} source={require("../icons/image_5.png")} />
+          <Image style={{ backgroundColor: "#fff", height: 60, width: 60, borderRadius: 50, marginBottom: 20, marginTop: 20 }} source={require("../../icons/image_5.png")} />
         </View>
 
         <View style={{ flexDirection: "row", alignSelf: "center", flex: 1, justifyContent: "flex-end", marginBottom: 100 }}>
@@ -110,70 +110,6 @@ const Login = ({ navigation }) => {
     </ScrollView>
   )
 };
-
-
-// const style = StyleSheet.create({
-
-//   simbolo: {
-//     height: "20%",
-//     alignItems: "baseline",
-//     justifyContent: "center",
-//     alignItems: "baseline",
-//     paddingLeft: 25,
-
-//   },
-
-//   header: {
-//     backgroundColor: "#FBF8F8",
-//     height: "30%"
-
-//   },
-
-//   titulo1: {
-//     fontSize: 55,
-//     color: "#EB6458",
-//     // fontFamily: { fontsLoaded }
-//   },
-
-//   titulo2: {
-//     fontSize: 50,
-//     color: "#1E7987",
-//     fontFamily: 'Amarante_400Regular'
-//   },
-
-//   loginIn: {
-//     marginLeft: 24
-//   },
-
-//   input: {
-//     //  backgroundColor:"#fff", 
-//     width: "80%",
-//     alignSelf: "center",
-//     borderBottomWidth: 1,
-//     borderColor: "#fff",
-//     fontSize: 20,
-//     marginTop: 50
-//   },
-
-//   botao: {
-//     alignSelf: "center",
-//     justifyContent: "center",
-//     backgroundColor: "#EB6458",
-//     width: "80%",
-//     height: "80%",
-//     borderRadius: 40,
-//   },
-
-//   login: {
-//     backgroundColor: "#1E7987",
-//     borderTopLeftRadius: 45,
-//     borderTopRightRadius: 45,
-//     paddingTop: 10,
-//     paddingBottom: 50,
-//     height: 700
-//   }
-
-// })
 
 
 
