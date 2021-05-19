@@ -1,9 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements'
-import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper'
-import Carousel from 'react-native-snap-carousel';
-
 
 
 const PrimeiraTela = ({ route, navigation }) => {
@@ -99,7 +96,6 @@ const style = StyleSheet.create({
 
     botao: {
         alignSelf: "center",
-        // justifyContent: "center",
         backgroundColor: "#EB6458",
         width: "80%",
         height: "35%",
@@ -119,7 +115,6 @@ const style = StyleSheet.create({
 
 
 })
-
 
 
 export default PrimeiraTela

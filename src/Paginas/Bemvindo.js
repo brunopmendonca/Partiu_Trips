@@ -1,20 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements'
-import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper'
+import { Card, Title, Paragraph } from 'react-native-paper'
 import Carousel from 'react-native-snap-carousel';
 import style from '../Styles/StyleBemvindo'
 
-
-
-const dados = require('../../icons/praia.png')
 
 const Bemvindo = ({ route, navigation }) => {
 
 
   const [bancoDeDados, setImagem] = useState(route.params)
   const [dados, setDados] = useState(bancoDeDados[0])
-  //dados.push(bancoDeDados)
   const carosselRef = useRef()
   console.log(dados)
 

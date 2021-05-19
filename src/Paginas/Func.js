@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, SafeAreaViewComponent } from 'react-native';
-import { Appbar, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper';
 import { Platform } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import style from "../Styles/StyleFunc"
@@ -20,7 +20,6 @@ const Func = ({ navigation, route }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [latitude, setLatitude] = useState();
   const [text, setText] = useState();
-  const [longitude, setLongitude] = useState();
   const [regiao, setRegiao] = useState()
 
   useEffect(() => {
@@ -54,9 +53,6 @@ const Func = ({ navigation, route }) => {
   }, []);
 
 
-
-
-
   const navGastos = async () => {
 
     let response = await fetch("http://192.168.43.223:3000/gasto", {
@@ -73,9 +69,9 @@ const Func = ({ navigation, route }) => {
 
     var json = await response.json()
     console.log(json.length)
-    navigation.navigate("Gastos", [json, route.params.id])
-
-
+    let soma = json.reduce((total, preco) => preco.valor + total, 0)
+    console.log(soma)
+    navigation.navigate("Gastos", [json, route.params.id, soma])
 
 
   }
@@ -153,110 +149,5 @@ const Func = ({ navigation, route }) => {
 
   )
 };
-
-
-// const style = StyleSheet.create({
-
-//   header: {
-//     flexDirection: "row",
-//     alignItems: "baseline",
-//     justifyContent: "space-around",
-//     marginTop: 20
-
-//   },
-
-//   simbolo: {
-//     alignItems: "baseline",
-//     justifyContent: "center",
-//     alignItems: "baseline",
-
-//   },
-
-//   titulo: {
-//     height: "15%",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     marginTop: 20
-
-//   },
-
-//   card: {
-//     marginTop: 20,
-//     borderRadius: 40,
-//     width: "90%",
-//     alignSelf: "center",
-//     padding: 20
-
-//   },
-
-//   card2: {
-//     marginTop: 20,
-//     borderRadius: 40,
-//     width: "90%",
-//     alignSelf: "center",
-//     padding: 20,
-//     marginBottom: 40
-
-//   },
-
-//   imagem: {
-//     width: "90%",
-//     alignSelf: "center",
-//     justifyContent: "center"
-
-//   },
-
-//   datas: {
-//     flexDirection: "row",
-//   },
-
-//   grupo: {
-//     flexDirection: "row",
-//     justifyContent: 'space-around',
-//     marginTop: 20,
-//     padding: 5
-//   },
-
-//   opcao: {
-//     backgroundColor: "#1E7987",
-//     height: 100,
-//     width: 100,
-//     borderRadius: 10,
-//     alignItems: "center",
-//     justifyContent: "center"
-
-//   },
-
-//   textoOpcao: {
-//     color: "#fff"
-//   },
-
-//   iconi: {
-//     height: 40,
-//     width: 40
-//   },
-
-//   mapa: {
-//     width: 300,
-//     height: 300,
-//     alignSelf: "center",
-//     marginTop: 20
-//   },
-
-//   paragraph: {
-//     fontSize: 18,
-//     textAlign: 'center',
-//   },
-
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     padding: 20,
-//   }
-
-// })
-
-
 
 export default Func

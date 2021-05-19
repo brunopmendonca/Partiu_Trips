@@ -12,8 +12,6 @@ const Arquivos = ({ route, navigation }) => {
     const [Data, setData] = useState([])
     const [valorTotal, setValorTotal] = useState(0)
     const [nada, setNada] = useState(0)
-    const [ide, setIde] = useState()
-    const [value, setValue] = useState([])
     const [expanded, setExpanded] = React.useState(true);
 
     const handlePress = () => setExpanded(!expanded);
@@ -118,55 +116,6 @@ const Arquivos = ({ route, navigation }) => {
 
     )
 };
-
-
-// const style = StyleSheet.create({
-
-//     container: {
-//         flex: 1
-//     },
-
-//     header: {
-//         flexDirection: "row",
-//         alignItems: "baseline",
-//         justifyContent: "space-around",
-//         marginTop: 20
-
-//     },
-
-//     title: {
-//         backgroundColor: "#E1F6BE",
-//         justifyContent: "center",
-//         color: "#55BC4C"
-//     },
-
-//     card: {
-
-//         backgroundColor: "#E1F6BE",
-//         marginTop: 20,
-//         justifyContent: "center",
-//         padding: 5
-
-//     },
-
-//     entradas: {
-//         marginTop: 20
-//     },
-
-//     lista: {
-//         backgroundColor: "#fff"
-//     },
-
-//     resultados: {
-//         flexDirection: "row",
-//         justifyContent: "space-between",
-//         padding: 6
-//     }
-
-
-
-// })
-
 
 
 export default Arquivos

@@ -21,13 +21,11 @@ const style = StyleSheet.create({
     titulo1: {
         fontSize: 55,
         color: "#EB6458",
-        // fontFamily: { fontsLoaded }
     },
 
     titulo2: {
         fontSize: 50,
         color: "#1E7987",
-        fontFamily: 'Amarante_400Regular'
     },
 
     loginIn: {
@@ -35,7 +33,7 @@ const style = StyleSheet.create({
     },
 
     input: {
-        //  backgroundColor:"#fff", 
+
         width: "80%",
         alignSelf: "center",
         borderBottomWidth: 1,
