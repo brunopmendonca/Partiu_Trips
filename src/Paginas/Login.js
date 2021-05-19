@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
+import { Text, View, Image, TextInput, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { useFonts, Amarante_400Regular } from '@expo-google-fonts/amarante';
 import style from '../Styles/StyleLogin'
-
 
 
 const Login = ({ navigation }) => {
 
-  const fontsLoaded = useFonts({
-    Amarante_400Regular,
-  })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
