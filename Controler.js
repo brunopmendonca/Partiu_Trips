@@ -214,7 +214,6 @@ app.post('/retirarQuantidade', async (req, res) => {
     })
 
 
-
 })
 
 

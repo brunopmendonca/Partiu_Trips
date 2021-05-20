@@ -8,7 +8,7 @@ import Login from './src/Paginas/Login';
 import Cadastro from './src/Paginas/Cadastro';
 import Bemvindo from './src/Paginas/Bemvindo';
 import Dados from './src/Paginas/Dados';
-import Func from "./src/Paginas/Func"
+import Funcionalidades from "./src/Paginas/Funcionalidades"
 import Gastos from "./src/Paginas/Gastos"
 import Arquivos from "./src/Paginas/Arquivos"
 import PrimeiraTela from "./src/Paginas/PrimeiraTela"
@@ -24,7 +24,7 @@ export default function App() {
         <Stack.Screen name='Cadastro' component={Cadastro} />
         <Stack.Screen name='Bemvindo' component={Bemvindo} />
         <Stack.Screen name='Dados' component={Dados} />
-        <Stack.Screen name='Func' component={Func} />
+        <Stack.Screen name='Funcionalidades' component={Funcionalidades} />
         <Stack.Screen name='Gastos' component={Gastos} />
         <Stack.Screen name='Arquivos' component={Arquivos} />
         <Stack.Screen name='PrimeiraTela' component={PrimeiraTela} />
