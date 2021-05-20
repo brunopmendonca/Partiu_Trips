@@ -112,7 +112,7 @@ const Gastos = ({ route }) => {
 
     async function adicionarQuantidade(parametro1, paramentro2, paramentro3) {
 
-        let response = await fetch("http://192.168.43.223:3000/adicionarQuantidade", {
+        let response = await fetch("http:/192.168.43.223:3000/adicionarQuantidade", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

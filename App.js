@@ -1,6 +1,5 @@
-import { NavigationContainer, StackActions, safe } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { SafeAreaView, SafeAreaViewComponent } from 'react-native';
 import React from 'react';
 
 
@@ -12,6 +11,7 @@ import Funcionalidades from "./src/Paginas/Funcionalidades"
 import Gastos from "./src/Paginas/Gastos"
 import Arquivos from "./src/Paginas/Arquivos"
 import PrimeiraTela from "./src/Paginas/PrimeiraTela"
+import NovaSenha from "./src/Paginas/NovaSenha"
 
 const Stack = createStackNavigator()
 
@@ -28,6 +28,7 @@ export default function App() {
         <Stack.Screen name='Gastos' component={Gastos} />
         <Stack.Screen name='Arquivos' component={Arquivos} />
         <Stack.Screen name='PrimeiraTela' component={PrimeiraTela} />
+        <Stack.Screen name='NovaSenha' component={NovaSenha} />
       </Stack.Navigator>
     </NavigationContainer >
 

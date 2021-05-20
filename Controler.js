@@ -15,6 +15,38 @@ let gasto = models.Gasto
 
 // ***********************************************************************************//
 
+// logar usuario
+app.post("/login", async (req, res) => {
+
+    console.log(req.body)
+
+    let response = await user.findOne({
+        where: { name: req.body.name, password: req.body.password }
+    })
+
+    res.send(JSON.stringify(response))
+
+})
+
+
+// Cadastrar usuario 
+app.post("/verificarUsuario", async (req, res) => {
+
+    let response = await user.findOne({
+        where: { name: req.body.name }
+    })
+
+    if (response == null) {
+        res.send(JSON.stringify("usuario Cadastrado"))
+    } else (
+        res.send(JSON.stringify("Nome de usuario ja existe"))
+    )
+
+})
+
+
+// ***********************************************************************************//
+
 // Cadastrar usuario 
 app.post("/cadastro", async (req, res) => {
 
@@ -35,20 +67,6 @@ app.post("/cadastro", async (req, res) => {
     } else (
         res.send(JSON.stringify("ja possui cadastro"))
     )
-
-})
-
-
-// ***********************************************************************************//
-
-// logar usuario
-app.post("/login", async (req, res) => {
-
-    let response = await user.findOne({
-        where: { name: req.body.name, password: req.body.password }
-    })
-
-    res.send(JSON.stringify(response))
 
 })
 
@@ -215,6 +233,24 @@ app.post('/retirarQuantidade', async (req, res) => {
 
 
 })
+
+// ***********************************************************************************//
+
+// Mudar Senha 
+app.post('/TrocarSenha', async (req, res) => {
+    console.log(req.body)
+
+    let update = await user.findOne({
+        where: { name: req.body.name }
+    }).then((response) => {
+        response.password = req.body.password
+        response.save()
+    })
+
+})
+
+// ***********************************************************************************//
+
 
 
 let port = process.env.PORT || 3000

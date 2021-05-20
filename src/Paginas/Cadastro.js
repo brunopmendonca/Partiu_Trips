@@ -22,9 +22,39 @@ const Cadastro = ({ navigation }) => {
     setConfPassword(txtConfPassword)
   }
 
+  async function verificarUsuario() {
+    if (confPassword == password) {
+      let response = await fetch("http:/192.168.43.223:3000/verificarUsuario", {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: email,
+
+        })
+
+      }
+
+      )
+
+      let json = await response.json()
+      if (json == "usuario Cadastrado") {
+        sendForm()
+      } else {
+        window.alert(json)
+      }
+    } else (
+      window.alert("senha nao bate")
+    )
+
+  }
+
+
   async function sendForm() {
     if (confPassword == password) {
-      let response = await fetch("http://192.168.43.223:3000/cadastro", {
+      let response = await fetch("http:/192.168.43.223:3000/cadastro", {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -85,7 +115,7 @@ const Cadastro = ({ navigation }) => {
             <Button
               buttonStyle={style.botao}
               title="Cadastrar"
-              onPress={sendForm}
+              onPress={verificarUsuario}
               titleStyle={{ fontSize: 23 }}
             />
           </View>

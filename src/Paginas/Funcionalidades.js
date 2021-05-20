@@ -5,7 +5,8 @@ import { Platform } from 'react-native';
 import MapView from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
-import style from "../Styles/StyleFunc"
+import style from "../Styles/StyleFuncionalidades"
+import Cards from '../Componentes/Cards'
 
 const Funcionalidades = ({ navigation, route }) => {
 
@@ -91,7 +92,9 @@ const Funcionalidades = ({ navigation, route }) => {
         <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
       </View>
 
-      <Card style={style.card}>
+      <Cards ida={ida} volta={volta} lugar={lugar} />
+
+      {/* <Card style={style.card}>
         <Card.Cover style={style.imagem} source={imagem} />
         <Card.Content>
           <Title>{lugar}</Title>
@@ -101,7 +104,7 @@ const Funcionalidades = ({ navigation, route }) => {
             <Paragraph> {volta} </Paragraph>
           </View>
         </Card.Content>
-      </Card>
+      </Card> */}
 
       <View style={style.grupo}>
 
