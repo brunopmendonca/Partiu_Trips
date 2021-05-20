@@ -53,7 +53,6 @@ const Dados = ({ route, navigation }) => {
     console.log(json)
     navigation.navigate("PrimeiraTela")
 
-
   }
 
   return (

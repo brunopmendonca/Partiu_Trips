@@ -2,9 +2,6 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const models = require('./models')
-//const { default: Gastos } = require("./src/Gastos")
-
-//const { all } = require("sequelize/types/lib/operators")
 
 const app = express()
 
@@ -16,13 +13,14 @@ let user = models.User
 let viagem = models.Viagem
 let gasto = models.Gasto
 
+// ***********************************************************************************//
+
+// Cadastrar usuario 
 app.post("/cadastro", async (req, res) => {
 
     let response = await user.findOne({
         where: { name: req.body.name, password: req.body.password }
     })
-
-    // console.log(response)
 
     if (response == null) {
         res.send(JSON.stringify("cadastro feito com sucesso"))
@@ -40,6 +38,10 @@ app.post("/cadastro", async (req, res) => {
 
 })
 
+
+// ***********************************************************************************//
+
+// logar usuario
 app.post("/login", async (req, res) => {
 
     let response = await user.findOne({
@@ -50,6 +52,9 @@ app.post("/login", async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// mostrar viagens
 app.post('/viagens', async (req, res) => {
     // console.log(req.body)
     let update = await user.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
@@ -59,6 +64,9 @@ app.post('/viagens', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// cadastrar nova viagem
 app.post('/lista', async (req, res) => {
 
     console.log(req.body)
@@ -83,6 +91,9 @@ app.post('/lista', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// Mostrar gastos
 app.post('/gasto', async (req, res) => {
 
     let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
@@ -92,6 +103,9 @@ app.post('/gasto', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// Mostrar toatal de gastos
 app.post('/gastoTotal', async (req, res) => {
 
     let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
@@ -101,6 +115,9 @@ app.post('/gastoTotal', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// Restart da pagina e carregar informaçoes atualizadas.
 app.post('/restart', async (req, res) => {
 
     let update = await viagem.findByPk(req.body.id, { include: [{ all: true }] }).then((response) => {
@@ -110,6 +127,9 @@ app.post('/restart', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// cadastrar novos gastos
 app.post('/enviarGasto', async (req, res) => {
 
     console.log(req.body)
@@ -132,6 +152,9 @@ app.post('/enviarGasto', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// Deletar gastos
 app.post('/deletarGasto', async (req, res) => {
     console.log(req.body)
     let deletar = await gasto.destroy({
@@ -145,6 +168,9 @@ app.post('/deletarGasto', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// adicionar quantidade do produto --- botao +
 app.post('/adicionarQuantidade', async (req, res) => {
     console.log(req.body)
     let update = await gasto.findAll({
@@ -164,6 +190,9 @@ app.post('/adicionarQuantidade', async (req, res) => {
 
 })
 
+// ***********************************************************************************//
+
+// Subtrair quantidade do produto --- botão -
 app.post('/retirarQuantidade', async (req, res) => {
     console.log(req.body)
     let update = await gasto.findAll({
@@ -185,22 +214,7 @@ app.post('/retirarQuantidade', async (req, res) => {
     })
 
 
-
 })
-
-
-
-// app.post('/gasto', async (req, res) => {
-
-//     let update = await viagem.findByPk(15, { include: [{ all: true }] }).then((response) => {
-//        // console.log(JSON.stringify(response.Gastos))
-//         res.send(JSON.stringify(response))
-//     })
-
-
-
-// })
-
 
 
 let port = process.env.PORT || 3000
@@ -209,73 +223,3 @@ app.listen(port, (req, res) => {
     console.log("servidor rodando")
 })
 
-
-    //  console.log(req.body)
-
-    // let create = await gasto.create({
-    //     viagemId: req.body.id,
-    //     lista: req.body.lista,
-    //     valor: req.body.valor,
-    //     quantidade: req.body.quantidade,
-    //     createdAt: "1",
-    //     updatedAt: "1"
-
-    // })
-
-
-
-
-
-// app.post("/cadastro", async (req, res) => {
-
-//     let create = await user.create({
-//         name: req.body.name,
-//         password: req.body.password,
-//         createdAt: "1",
-//         updatedAt: "1"
-
-//     })
-//     res.send("servidor rodando")
-
-//     console.log(req.body.name)
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get('/create', async (req, res) => {
-//     let create = await user.create({
-//         name: "bruCesar",
-//         password: "fghi",
-//         createdAt: "1",
-//         updatedAt: "1"
-
-//     })
-//     res.send("servidor rodando")
-// })
-
-// app.get('/read', async (req, res) => {
-//     let read = await user.findAll()
-//     console.log(read)
-// })
-
-// app.get('/update', async (req, res) => {
-//     let update = await user.findByPk(1, {
-//         include: [{ all: true }]
-//     }).then((response) => {
-//         console.log(response.Viagems[0])
-//     })
-
-// })

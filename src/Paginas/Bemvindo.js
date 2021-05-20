@@ -46,7 +46,7 @@ const Bemvindo = ({ route, navigation }) => {
     return (
       <View>
         <Card style={style.card}>
-          <TouchableOpacity style={style.imagem} onPress={() => navigation.navigate("Func", { ida: item.ida, volta: item.volta, imagem: item.imagem, lugar: item.lugar, id: item.id, userId: item.userId })}>
+          <TouchableOpacity style={style.imagem} onPress={() => navigation.navigate("Funcionalidades", { ida: item.ida, volta: item.volta, imagem: item.imagem, lugar: item.lugar, id: item.id, userId: item.userId })}>
             <Image style={{ height: 200, width: 250 }} source={item.imagem} />
           </TouchableOpacity>
           <Card.Content>

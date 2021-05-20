@@ -7,7 +7,7 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import style from "../Styles/StyleFunc"
 
-const Func = ({ navigation, route }) => {
+const Funcionalidades = ({ navigation, route }) => {
 
   console.log(route.params)
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
@@ -150,4 +150,4 @@ const Func = ({ navigation, route }) => {
   )
 };
 
-export default Func
+export default Funcionalidades
