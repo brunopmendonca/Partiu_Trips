@@ -6,7 +6,7 @@ import MapView from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import style from "../Styles/StyleFuncionalidades"
-import Cards from '../Componentes/Cards'
+// import Cards from '../Componentes/Cards'
 
 const Funcionalidades = ({ navigation, route }) => {
 
@@ -56,7 +56,7 @@ const Funcionalidades = ({ navigation, route }) => {
 
   const navGastos = async () => {
 
-    let response = await fetch("http://192.168.43.223:3000/gasto", {
+    let response = await fetch("https://partiu-trips.herokuapp.com/gasto", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -92,9 +92,9 @@ const Funcionalidades = ({ navigation, route }) => {
         <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
       </View>
 
-      <Cards ida={ida} volta={volta} lugar={lugar} />
+      {/* <Cards ida={ida} volta={volta} lugar={lugar} /> */}
 
-      {/* <Card style={style.card}>
+      <Card style={style.card}>
         <Card.Cover style={style.imagem} source={imagem} />
         <Card.Content>
           <Title>{lugar}</Title>
@@ -104,7 +104,7 @@ const Funcionalidades = ({ navigation, route }) => {
             <Paragraph> {volta} </Paragraph>
           </View>
         </Card.Content>
-      </Card> */}
+      </Card>
 
       <View style={style.grupo}>
 

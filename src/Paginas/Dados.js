@@ -31,7 +31,7 @@ const Dados = ({ route, navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch("http://192.168.43.223:3000/lista", {
+    let response = await fetch("https://partiu-trips.herokuapp.com/lista", {
       method: 'POST',
       headers: {
         Accept: 'application/json',
