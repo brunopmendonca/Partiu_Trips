@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "SUA-SENHA",
+    "database": "Partiu_Trips",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "bbd8f2d4be0038",
+    "password": "aee92890",
+    "database": "us-cdbr-east-04.cleardb.com",
+    "host": "heroku_df9b39ba9a10597",
+    "dialect": "mysql"
+  },
+  "urlRoot": "https://partiu-trips.herokuapp.com/"
+}
