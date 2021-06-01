@@ -23,7 +23,7 @@ const NovaSenha = ({ navigation }) => {
 
     async function sendForm() {
         if (confPassword == newPassword) {
-            let response = await fetch("http://192.168.43.223:3000/TrocarSenha", {
+            let response = await fetch("https://partiu-trips.herokuapp.com/TrocarSenha", {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

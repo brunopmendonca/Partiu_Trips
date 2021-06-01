@@ -25,7 +25,7 @@ const Gastos = ({ route }) => {
 
     async function restart() {
 
-        let response = await fetch("http://192.168.43.223:3000/restart", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/restart", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -46,7 +46,7 @@ const Gastos = ({ route }) => {
 
     async function gastosTotal() {
 
-        let response = await fetch("http://192.168.43.223:3000/gastoTotal", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/gastoTotal", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -66,7 +66,7 @@ const Gastos = ({ route }) => {
 
     async function sendForm2() {
 
-        let response = await fetch("http://192.168.43.223:3000/enviarGasto", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/enviarGasto", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -89,7 +89,7 @@ const Gastos = ({ route }) => {
 
     async function deleteSendForm(parametro, paramentro2) {
 
-        let response = await fetch("http://192.168.43.223:3000/deletarGasto", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/deletarGasto", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -112,7 +112,7 @@ const Gastos = ({ route }) => {
 
     async function adicionarQuantidade(parametro1, paramentro2, paramentro3) {
 
-        let response = await fetch("http:/192.168.43.223:3000/adicionarQuantidade", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/adicionarQuantidade", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -135,7 +135,7 @@ const Gastos = ({ route }) => {
 
     async function retirarQuantidade(parametro1, paramentro2, paramentro3) {
 
-        let response = await fetch("http://192.168.43.223:3000/retirarQuantidade", {
+        let response = await fetch("https://partiu-trips.herokuapp.com/retirarQuantidade", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

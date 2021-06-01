@@ -24,7 +24,7 @@ const Cadastro = ({ navigation }) => {
 
   async function verificarUsuario() {
     if (confPassword == password) {
-      let response = await fetch("http:/192.168.43.223:3000/verificarUsuario", {
+      let response = await fetch("https://partiu-trips.herokuapp.com/verificarUsuario", {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -54,7 +54,7 @@ const Cadastro = ({ navigation }) => {
 
   async function sendForm() {
     if (confPassword == password) {
-      let response = await fetch("http:/192.168.43.223:3000/cadastro", {
+      let response = await fetch("https://partiu-trips.herokuapp.com/cadastro", {
         method: 'POST',
         headers: {
           Accept: 'application/json',
