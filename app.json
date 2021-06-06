@@ -18,11 +18,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bruCesár.PartiuTrip",
+      "bundleIdentifier": "com.bruCesar.PartiuTrip",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.bruCésar.PartiuTrip",
+      "package": "com.bruCesar.PartiuTrip",
       "versionCode": 1
     }
   }

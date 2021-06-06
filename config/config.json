@@ -16,8 +16,8 @@
   "production": {
     "username": "bbd8f2d4be0038",
     "password": "aee92890",
-    "database": "us-cdbr-east-04.cleardb.com",
-    "host": "heroku_df9b39ba9a10597",
+    "database": "heroku_df9b39ba9a10597",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   },
   "urlRoot": "https://partiu-trips.herokuapp.com/"
