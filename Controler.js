@@ -253,7 +253,7 @@ app.post('/TrocarSenha', async (req, res) => {
 
 
 
-let port = process.env.PORT || 3000
+let port = process.env.PORT
 
 app.listen(port, (req, res) => {
     console.log("servidor rodando")
