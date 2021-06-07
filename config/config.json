@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "bbd8f2d4be0038",
-    "password": "aee92890",
-    "database": "heroku_df9b39ba9a10597",
-    "host": "us-cdbr-east-04.cleardb.com",
+    "username": "b83cfd90484edd",
+    "password": "454ce6b8",
+    "database": "us-cdbr-east-04.cleardb.com",
+    "host": "heroku_a691dbc4dbceb8c",
     "dialect": "mysql"
   },
   "urlRoot": "https://partiu-trips.herokuapp.com/"
