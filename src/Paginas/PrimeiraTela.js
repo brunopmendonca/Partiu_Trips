@@ -26,7 +26,7 @@ const PrimeiraTela = ({ route, navigation }) => {
 
         })
 
-        let json = await response.json()
+        let json = await response
         console.log(json)
         navigation.navigate("Bemvindo", [json, route.params.id])
     }
