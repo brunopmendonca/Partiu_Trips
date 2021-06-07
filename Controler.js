@@ -24,7 +24,9 @@ app.post("/login", async (req, res) => {
         where: { name: req.body.name, password: req.body.password }
     })
 
-    res.send(JSON.stringify(response))
+    var string = JSON.stringify(response);
+    var parse = JSON.parse(string);
+    res.send(parse)
 
 })
 
