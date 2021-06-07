@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
     })
 
     let json = await response.json()
-    console.log(json.id)
+    console.log(json)
 
     if (json == null) {
       window.alert("nao possui cadastro")
