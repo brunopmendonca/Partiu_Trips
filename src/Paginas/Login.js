@@ -3,6 +3,7 @@ import { Text, View, Image, TextInput, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import style from '../Styles/StyleLogin'
+import config from '../../config/config.json'
 
 
 const Login = ({ navigation }) => {
@@ -19,7 +20,7 @@ const Login = ({ navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch("https://partiu-trips.herokuapp.com/login", {
+    let response = await fetch(`${config.urlRoot}login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -33,14 +34,14 @@ const Login = ({ navigation }) => {
 
     })
 
-    let json = await response.json()
+    let json = await JSON.stringify(response)
     console.log(json)
 
     if (json == null) {
       window.alert("nao possui cadastro")
     }
     else (
-      navigation.navigate("PrimeiraTela", { id: json.id, nome: json.name })
+      navigation.navigate("PrimeiraTela", json)
     )
 
   }
