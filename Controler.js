@@ -262,7 +262,7 @@ let port = process.env.PORT
 
 app.listen(port, (req, res) => {
     console.log("servidor rodando")
-    response.write("funcionando")
+    res.write("funcionando")
 
 })
 
