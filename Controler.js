@@ -18,7 +18,6 @@ let gasto = models.Gasto
 // logar usuario
 app.post("/login", async (req, res) => {
 
-    res.sendStatus("nada")
 
     console.log(req.body)
 
@@ -28,6 +27,8 @@ app.post("/login", async (req, res) => {
 
     console.log(response)
     res.send(JSON.stringify(response))
+
+
 
 })
 
