@@ -25,7 +25,6 @@ const Login = ({ navigation }) => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        'responseType': 'text'
       },
       body: JSON.stringify({
         name: email,
