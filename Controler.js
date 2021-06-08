@@ -27,7 +27,7 @@ app.post("/login", async (req, res) => {
 
     console.log(response)
     res.send(JSON.stringify(response))
-    res.write("nada")
+    // res.write("nada")
 
 
 
@@ -262,7 +262,7 @@ let port = process.env.PORT
 
 app.listen(port, (req, res) => {
     console.log("servidor rodando")
-    res.write("funcionando")
+    // res.write("funcionando")
 
 })
 
