@@ -25,7 +25,7 @@ app.post("/login", async (req, res) => {
     })
 
     console.log(response)
-    res.send(JSON.parse(response))
+    res.send(response)
 
 })
 
