@@ -16,7 +16,9 @@ let gasto = models.Gasto
 // ***********************************************************************************//
 
 // logar usuario
-app.post("login", async (req, res) => {
+app.post("/login", async (req, res) => {
+
+    res.sendStatus("nada")
 
     console.log(req.body)
 
