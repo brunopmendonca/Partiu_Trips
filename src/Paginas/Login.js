@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import style from '../Styles/StyleLogin'
 import config from '../../config/config.json'
+import axios from 'axios'
 
 
 const Login = ({ navigation }) => {
@@ -20,7 +21,7 @@ const Login = ({ navigation }) => {
 
   async function sendForm() {
 
-    let response = await fetch(`${config.urlRoot}login`, {
+    let response = await axios.post(`${config.urlRoot}login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -34,7 +35,7 @@ const Login = ({ navigation }) => {
 
     })
 
-    let json = await JSON.parse(response)
+    let json = await response.json()
     console.log(json)
 
     if (json == null) {

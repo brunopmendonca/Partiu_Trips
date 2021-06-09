@@ -7,7 +7,7 @@ const { resolve } = require('path')
 const app = express()
 
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 let user = models.User
@@ -44,7 +44,7 @@ app.post("/login", async (req, res) => {
     })
 
     console.log(response)
-    res.send(response)
+    res.send(JSON.stringify(response))
     // res.write("nada")
 
 
