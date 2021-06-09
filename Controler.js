@@ -14,13 +14,13 @@ let user = models.User
 let viagem = models.Viagem
 let gasto = models.Gasto
 
-app.use("/", express.static(
-    resolve(
-        __dirname,
-        './build'
-    )
+// app.use("/", express.static(
+//     resolve(
+//         __dirname,
+//         './build'
+//     )
 
-))
+// ))
 
 app.get('/', () => {
     res.send("servidor funcionando")
