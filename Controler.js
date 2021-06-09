@@ -22,7 +22,7 @@ let gasto = models.Gasto
 
 // ))
 
-app.get('/', () => {
+app.get('/', async (req, res) => {
     res.send("servidor funcionando")
 })
 
