@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
 //     res.send(req.body)
 // })
 
-// ***********************************************************************************//
+// ********Request failed with status code 404 expo***************************************************************************//
 
 // logar usuario
 app.post("/login", async (req, res) => {
@@ -46,7 +46,6 @@ app.post("/login", async (req, res) => {
     console.log(response)
     res.send(JSON.stringify(response))
     // res.write("nada")
-
 
 
 })
@@ -66,8 +65,6 @@ app.post("/verificarUsuario", async (req, res) => {
     )
 
 })
-
-
 // ***********************************************************************************//
 
 // Cadastrar usuario 
