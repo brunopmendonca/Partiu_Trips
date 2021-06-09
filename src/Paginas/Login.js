@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
 
   async function sendForm() {
 
-    await fetch(`${config.urlRoot}login`, {
+    let response = await fetch(`${config.urlRoot}login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
 
     })
 
-    let json = response.json()
+    let json = response
     console.log(json)
 
     if (json == null) {

@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const models = require('./models')
+const { resolve } = require('path')
 
 const app = express()
 
@@ -13,11 +14,17 @@ let user = models.User
 let viagem = models.Viagem
 let gasto = models.Gasto
 
+app.use("/", express.static(
+    resolve(
+        __dirname,
+        './build'
+    )
+))
+
 // ***********************************************************************************//
 
 // logar usuario
 app.post("/login", async (req, res) => {
-
 
     console.log(req.body)
 
@@ -26,7 +33,7 @@ app.post("/login", async (req, res) => {
     })
 
     console.log(response)
-    res.send(JSON.stringify(response))
+    res.send(response)
     // res.write("nada")
 
 
