@@ -19,7 +19,12 @@ app.use("/", express.static(
         __dirname,
         './build'
     )
+
 ))
+
+app.get('/', () => {
+    res.send("servidor funcionando")
+})
 
 // ***********************************************************************************//
 
