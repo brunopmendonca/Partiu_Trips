@@ -19,31 +19,33 @@ const Login = ({ navigation }) => {
     setPassword(txtPassword)
   }
 
+  let body = {
+    name: email,
+    password: password
+  }
+
+
   async function sendForm() {
 
-    let response = await axios.post(`${config.urlRoot}login`, {
-      method: 'POST',
+    let response = await axios.post("https://partiu-trips.herokuapp.com/login", body, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name: email,
-        password: password
 
-      })
-
+    }).then(resp => {
+      console.log(resp.data.name)
     })
 
-    let json = await response.json()
-    console.log(json)
+    // let json = await response.json()
+    // console.log(json)
 
-    if (json == null) {
-      window.alert("nao possui cadastro")
-    }
-    else (
-      navigation.navigate("PrimeiraTela", json)
-    )
+    // if (json == null) {
+    //   window.alert("nao possui cadastro")
+    // }
+    // else (
+    //   navigation.navigate("PrimeiraTela", json)
+    // )
 
   }
 
