@@ -7,7 +7,7 @@ const { resolve } = require('path')
 const app = express()
 
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 let user = models.User
