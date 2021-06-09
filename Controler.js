@@ -26,6 +26,10 @@ app.get('/', async (req, res) => {
     res.send("servidor funcionando")
 })
 
+app.get('/login', async (req, res) => {
+    res.send(req.body)
+})
+
 // ***********************************************************************************//
 
 // logar usuario
