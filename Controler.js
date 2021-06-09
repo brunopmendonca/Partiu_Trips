@@ -72,7 +72,7 @@ app.post("/verificarUsuario", async (req, res) => {
 
 // Cadastrar usuario 
 app.post("/cadastro", async (req, res) => {
-
+    console.log(req.body)
     let response = await user.findOne({
         where: { name: req.body.name, password: req.body.password }
     })
@@ -88,7 +88,7 @@ app.post("/cadastro", async (req, res) => {
         })
 
     } else (
-        res.send(JSON.stringify("ja possui cadastro"))
+        res.send(JSON.parse("ja possui cadastro"))
     )
 
 })
@@ -276,7 +276,7 @@ app.post('/TrocarSenha', async (req, res) => {
 
 
 
-let port = process.env.PORT
+let port = process.env.PORT || 3000
 
 app.listen(port, (req, res) => {
     console.log("servidor rodando")
