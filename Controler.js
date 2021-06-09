@@ -24,9 +24,11 @@ let gasto = models.Gasto
 
 app.get('/', async (req, res) => {
     res.send("servidor funcionando")
+    console.log("servido")
 })
 
 app.get('/login', async (req, res) => {
+    console.log(req.body)
     res.send(req.body)
 })
 
@@ -42,7 +44,7 @@ app.post("/login", async (req, res) => {
     })
 
     console.log(response)
-    res.send(response)
+    res.send(JSON.stringify(response))
     // res.write("nada")
 
 

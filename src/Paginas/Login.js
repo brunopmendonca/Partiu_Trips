@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
 
     })
 
-    let json = response
+    let json = response.json()
     console.log(json)
 
     if (json == null) {
