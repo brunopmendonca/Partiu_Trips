@@ -25,7 +25,7 @@ const Cadastro = ({ navigation }) => {
 
   async function verificarUsuario() {
     if (confPassword == password) {
-      let response = await fetch(`${config.urlRoot}cadastro`, {
+      let response = await fetch(`${config.urlRoot}verificarUsuario`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -41,7 +41,7 @@ const Cadastro = ({ navigation }) => {
 
       )
 
-      let json = await response.json()
+      let json = await JSON.parse(response)
       console.log(json)
       if (json == "usuario Cadastrado") {
         sendForm()
@@ -74,7 +74,7 @@ const Cadastro = ({ navigation }) => {
 
       )
 
-      let json = await response.json()
+      let json = await JSON.parse(response)
       console.log(json)
       window.alert(json)
     } else (

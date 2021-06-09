@@ -44,7 +44,7 @@ app.post("/login", async (req, res) => {
     })
 
     console.log(response)
-    res.send(JSON.stringify(response))
+    res.send(response)
     // res.write("nada")
 
 
