@@ -27,10 +27,10 @@ app.get('/', async (req, res) => {
     console.log("servido")
 })
 
-app.get('/login', async (req, res) => {
-    console.log(req.body)
-    res.send(req.body)
-})
+// app.get('/login', async (req, res) => {
+//     console.log(req.body)
+//     res.send(req.body)
+// })
 
 // ***********************************************************************************//
 
