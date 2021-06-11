@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-nati
 import { Button } from 'react-native-elements'
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import style from "../Styles/StyleCadastro"
-import config from '../../config/config.json'
 
 
 const Cadastro = ({ navigation }) => {
@@ -24,25 +23,31 @@ const Cadastro = ({ navigation }) => {
   }
 
   async function verificarUsuario() {
-    let response = await fetch(`${config.urlRoot}verificarUsuario`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: email,
-        password: password
+    if (confPassword == password) {
+      let response = await fetch("https://partiu-trips.herokuapp.com/verificarUsuario", {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: email,
 
-      })
+        })
 
-    }
+      }
 
+      )
+
+      let json = await response.json()
+      if (json == "usuario Cadastrado") {
+        sendForm()
+      } else {
+        window.alert(json)
+      }
+    } else (
+      window.alert("senha nao bate")
     )
-
-    let json = await response.json()
-    console.log(json)
-
 
   }
 
