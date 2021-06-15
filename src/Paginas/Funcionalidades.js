@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Appbar, Avatar, Card, Title, Paragraph } from 'react-native-paper';
-import { Platform } from 'react-native';
-import MapView from 'react-native-maps';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
+// import { Platform } from 'react-native';
+// import MapView from 'react-native-maps';
+// import Constants from 'expo-constants';
+// import * as Location from 'expo-location';
 import style from "../Styles/StyleFuncionalidades"
 // import Cards from '../Componentes/Cards'
 
 const Funcionalidades = ({ navigation, route }) => {
 
   console.log(route.params)
-  const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
-  const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
+  // const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+  // const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const [ida, setIda] = useState(route.params.ida)
   const [volta, setVolta] = useState(route.params.volta)
   const [imagem, setImagem] = useState(route.params.imagem)
@@ -23,35 +23,35 @@ const Funcionalidades = ({ navigation, route }) => {
   const [text, setText] = useState();
   const [regiao, setRegiao] = useState()
 
-  useEffect(() => {
-    (async () => {
-      if (Platform.OS === 'android' && !Constants.isDevice) {
-        setErrorMsg(
-          'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
-        );
-        return;
-      }
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
+  // useEffect(() => {
+  //   (async () => {
+  //     if (Platform.OS === 'android' && !Constants.isDevice) {
+  //       setErrorMsg(
+  //         'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
+  //       );
+  //       return;
+  //     }
+  //     let { status } = await Location.requestPermissionsAsync();
+  //     if (status !== 'granted') {
+  //       setErrorMsg('Permission to access location was denied');
+  //       return;
+  //     }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+  //     let location = await Location.getCurrentPositionAsync({});
+  //     setLocation(location);
 
-      if (errorMsg) {
-        setText(errorMsg);
-      } else if (location) {
-        setRegiao({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          latitudeDelta: 0.33,
-          longitudeDelta: 0.041,
-        })
-      }
-    })();
-  }, []);
+  //     if (errorMsg) {
+  //       setText(errorMsg);
+  //     } else if (location) {
+  //       setRegiao({
+  //         latitude: location.coords.latitude,
+  //         longitude: location.coords.longitude,
+  //         latitudeDelta: 0.33,
+  //         longitudeDelta: 0.041,
+  //       })
+  //     }
+  //   })();
+  // }, []);
 
 
   const navGastos = async () => {
@@ -89,7 +89,7 @@ const Funcionalidades = ({ navigation, route }) => {
       <View style={style.header} >
         <Image source={require("../../icons/simbolo.png")} />
         <Text style={{ fontSize: 28, color: "#1E7987", textAlign: "center" }}>Viagem</Text>
-        <Appbar.Action icon={MORE_ICON} onPress={() => { }} />
+        {/* <Appbar.Action icon={MORE_ICON} onPress={() => { }} /> */}
       </View>
 
       {/* <Cards ida={ida} volta={volta} lugar={lugar} /> */}
@@ -140,13 +140,13 @@ const Funcionalidades = ({ navigation, route }) => {
 
       </View>
 
-      <Card style={style.card2}>
+      {/* <Card style={style.card2}>
         <MapView
           style={style.mapa}
           initialRegion={regiao}
         />
         <Text>Ponto de parada</Text>
-      </Card>
+      </Card> */}
 
     </ScrollView>
 
